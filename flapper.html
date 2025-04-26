@@ -34,14 +34,35 @@ tw-passage {
 
 
 tw-story {
-  background: none;
+  background: #111; /* fallback color, dark */
+  color: white;
+  min-height: 100vh;
+}
+
+/* Specific background for tagged passages */
+tw-story[tags~="background1"] {
+  background: url('https://images.unsplash.com/photo-1690269528488-0be3960668f3?q=80&w=3116&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover no-repeat fixed;
 }
 
 tw-story[tags~="background1"] {
-  background: url('https://images.unsplash.com/photo-1607135097879-b6371869411a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover no-repeat fixed;
-  color: black;
+  color: white;
+}
+
+tw-story {
+  background: #111; /* fallback color, dark */
+  color: white;
   min-height: 100vh;
 }
+
+/* Specific background for tagged passages */
+tw-story[tags~="background2"] {
+  background: url('https://images.unsplash.com/photo-1567617010566-b96020c43e5a?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover no-repeat fixed;
+}
+
+tw-story[tags~="background2"] {
+  color: white;
+}
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Journal entries" tags="" position="600,300" size="100,100">[[Why I left]]
 [[The journey]]
 [[Arlene]]
@@ -54,7 +75,7 @@ tw-story[tags~="background1"] {
 [[Fatal flaw]]
 [[How did it end?]]
 [[News paper clipping]]
-[[Aftermath]]</tw-passagedata><tw-passagedata pid="2" name="Arlene" tags="bg1" position="1050,350" size="100,100">Digging in my tattered dress pocket looking for change, I was standing next to a black chipped pay station. I hadn&#39;t showered for days, I had nowhere to go, and I was a fool.  (click-append: &quot;I was a fool.&quot;) [ Moving to New York was the hardest thing I had to do.] I was in such agony to escape, and I did. 
+[[Aftermath]]</tw-passagedata><tw-passagedata pid="2" name="Arlene" tags="background2" position="1050,350" size="100,100">&#39;&#39;Digging in my tattered dress pocket looking for change, I was standing next to a black chipped pay station. I hadn&#39;t showered for days, I had nowhere to go, and I was a fool.  (click-append: &quot;I was a fool.&quot;) [ Moving to New York was the hardest thing I had to do.] I was in such agony to escape, and I did. 
 
 Without a plan.
 
@@ -69,10 +90,8 @@ I hesitated ringing my mother, knowing she must have been worried about my well 
 She asked me if I wanted to go inside the coffee shop across the street. //Have a drink with me//, she said.
 
 (t8n-delay: 20s) + (t8n: &quot;fade-down&quot;) [ I wish I had taken a moment to think that invite through, but to no one&#39;s surprise, I didn&#39;t, and I followed her across the street. If I could rewind that day, I would have never trailed after, because after that moment where I decided to become her friend, everything changed.] (click-append: &quot;where I decided to become her friend,&quot;) [ everything changed.]
-
+&#39;&#39;
 &lt;audio src=&quot;./audio/newyorkstreet.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
-
-&lt;img class=&quot;story-image-smaller&quot; src=&quot;./images/street.jpg&quot; alt=&quot;street&quot; /&gt;
 
 (after: 70s)[(goto: &quot;More about Arlene&quot;)] </tw-passagedata><tw-passagedata pid="3" name="Thomas" tags="" position="150,575" size="100,100">Thomas Keating who I was told was a school friend, and every now and then he would go to Julian&#39;s house for dinner to escape the quitness of his own home. Thomas had a showstar of a mother, who ended up dying in a freak accident at one of her performances. Ever since, Thomas had to move between aunts. until he ended up in the same neighbourhood as Julian and Edward. 
 
@@ -183,12 +202,12 @@ Arthur unbuttoned his suit jacket and draped it around my shoulders. I pulled it
 
 
 
-
-(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;======XXXXXXXXXXXXXXX====&quot;)[This journal belongs to Estelle Forrest. If found, do not open, do not read, and &lt;u&gt; //immediately//&lt;/u&gt; find its owner.
+&#39;&#39;&#39;&#39;
+&#39;&#39;(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;======XXXXXXXXXXXXXXX====&quot;)[This journal belongs to Estelle Forrest. If found, do not open, do not read, and &lt;u&gt; //immediately//&lt;/u&gt; find its owner.
 ] 
+&#39;&#39;&#39;&#39;&#39;&#39;
 
-
-(after: 5s)[(goto: &quot;Journal entries&quot;)]
+(after: 6s)[(goto: &quot;Journal entries&quot;)]
 
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
