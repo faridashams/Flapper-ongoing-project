@@ -63,6 +63,15 @@ tw-story[tags~="background2"] {
   color: white;
 }
 
+/* Add drop shadow to a specific passage */
+.tw-passage[data-passage="background2"] {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Targets images in a specific passage */
+.tw-passage[data-passage="background2"] img {
+  opacity: 0; /* Adjust from 0 (invisible) to 1 (fully visible) */
+}
 </style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Journal entries" tags="" position="600,300" size="100,100">[[Why I left]]
 [[The journey]]
 [[Arlene]]
