@@ -68,12 +68,20 @@ tw-story[tags~="background2"] {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Add drop shadow to a specific passage */
-.tw-passage[data-passage="background1"] {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1738090237225-4d9c7afc5287?q=80&w=3159&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4; /* Adjust this value (0 to 1) */
+  z-index: -1;
+  pointer-events: none;
 }
-
-
 </style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Journal entries" tags="" position="600,300" size="100,100">[[Why I left]]
 [[The journey]]
 [[Arlene]]
@@ -86,25 +94,28 @@ tw-story[tags~="background2"] {
 [[Fatal flaw]]
 [[How did it end?]]
 [[News paper clipping]]
-[[Aftermath]]</tw-passagedata><tw-passagedata pid="2" name="Arlene" tags="background2" position="1050,350" size="100,100">&#39;&#39;Digging in my tattered dress pocket looking for change, I was standing next to a black chipped pay station. I hadn&#39;t showered for days, I had nowhere to go, and I was a fool.  (click-append: &quot;I was a fool.&quot;) [ Moving to New York was the hardest thing I had to do.] I was in such agony to escape, and I did. 
+[[Aftermath]]</tw-passagedata><tw-passagedata pid="2" name="Arlene" tags="background2" position="1050,350" size="100,100">&#39;&#39;Digging in my tattered dress pocket looking for change, I stood next to a black chipped pay station. I hadn&#39;t showered in days, I had nowhere to go, and ~~I am a fool.~~  (click-append: &quot;I was a fool.&quot;) [ Moving to New York is the hardest thing I have had to do.] I was in such agony to escape, and I did. 
 
 Without a plan.
 
-I sensed a tap on my shoulder, and I cowered in, my shoulders hunching, and I turned around. A girl. I scoured her face. She looked to be around the same age as me. She gave me a warm smile, her complexion showing more freckles than skin, her fiery red hair reflected the sun. She asked if I was all right and if I needed help. I was mortified. I did need help, (click-append: &quot;I did need help,&quot;) [ But asking for it was never my strongest forte.]
+I sensed a tap on my shoulder, and my coins scattered everywhere. With a curse, I leaned down to collect them, a girl coming into my view not a second later. 
 
-I couldn’t form words at the start, but it did not unnerve the girl. (click-append: &quot;it did not unnerve the girl,&quot;) [ considering how she became in the later years.] She reached for my left hand that was not clutched around the cradle of the pay station, and placed a few loose changes in my palm. She gestured to the telephone with her head.
+I scoured her face, my eyebrows furrowing the more she smiled at me. She looked to be around the same age as me. Her smile was warm, her complexion showing more freckles than skin, and her fiery red hair reflected the sun.
+
+She asked if I was all right and if I needed help. I could not remember the last time someone had offered their help. I did need help, (click-append: &quot;I did need help,&quot;) [ But asking for it was never my strongest forte.]
+
+I couldn’t form words at the start, but it did not unnerve the girl. (click-append: &quot;it did not unnerve the girl,&quot;) [ considering how she became in the later years.] She reached for my left hand and helped me stand up, then she unclenched my hand and placed a few loose changes in my palm. She gestured to the telephone with her head.
 
 //Call whomever you want to call//, she said. 
 
-I hesitated ringing my mother, knowing she must have been worried about my well being. I decided to wait, and pocketed the change the girl gave me, thinking I could have use for it later. The girl saw the coins slip inside my pocket, but her smile never wavered. 
+I hesitated ringing my mother, not knowing whether my father was hovering over the phone and would not let her answer or not. I decided to wait, and pocketed the change the girl gave me, thinking I could have use for it later. She saw the coins slip inside my pocket, but her smile never wavered. 
 
-She asked me if I wanted to go inside the coffee shop across the street. //Have a drink with me//, she said.
+She asked me if I wanted to go inside the coffee shop across the street.
 
-I wish I had taken a moment to think that invite through, but to no one&#39;s surprise, I didn&#39;t, and I followed her across the street. If I could rewind that day, I would have never trailed after, because after that moment where I decided to become her friend, (click-append: &quot;where I decided to become her friend,&quot;) [ everything changed.]
-&#39;&#39;
+//Have a drink with me//, she said.
+
+
 &lt;audio src=&quot;./audio/newyorkstreet.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
-
-&lt;img src=&quot;https://images.unsplash.com/photo-1738090237225-4d9c7afc5287?q=80&amp;w=3159&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&quot; alt=&quot;background2&quot;&gt;
 
 
 (after: 70s)[(goto: &quot;More about Arlene&quot;)] </tw-passagedata><tw-passagedata pid="3" name="Thomas" tags="" position="150,575" size="100,100">Thomas Keating who I was told was a school friend, and every now and then he would go to Julian&#39;s house for dinner to escape the quitness of his own home. Thomas had a showstar of a mother, who ended up dying in a freak accident at one of her performances. Ever since, Thomas had to move between aunts. until he ended up in the same neighbourhood as Julian and Edward. 
