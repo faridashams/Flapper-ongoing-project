@@ -70,26 +70,24 @@ tw-story[tags~="background2"] {
 
 
 .background-opacity {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .background-opacity::before {
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-image: url("https://images.unsplash.com/photo-1738090237225-4d9c7afc5287?q=80&w=3159&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   background-position: center;
-  opacity: 0.5;  /* Change this value for opacity control */
+  opacity: 0.5;
   z-index: -1;
+  pointer-events: none;
 }
+
 
 
 .slow-fade-screen {
@@ -155,9 +153,9 @@ She asked me if I wanted to go inside the coffee shop across the street.
   (goto: &quot;More about Arlene&quot;)
 ]
 
-|backgroundPassage&gt;[This is the passage with a custom background.]
-
 (change: &quot;body&quot;&#39;s classes to [&quot;background-opacity&quot;])
+
+
 
 </tw-passagedata><tw-passagedata pid="3" name="Thomas" tags="" position="150,575" size="100,100">Thomas Keating who I was told was a school friend, and every now and then he would go to Julian&#39;s house for dinner to escape the quitness of his own home. Thomas had a showstar of a mother, who ended up dying in a freak accident at one of her performances. Ever since, Thomas had to move between aunts. until he ended up in the same neighbourhood as Julian and Edward. 
 
