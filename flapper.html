@@ -69,19 +69,28 @@ tw-story[tags~="background2"] {
 }
 
 
-body::after {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
+.background-opacity {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
   height: 100vh;
+}
+
+.background-opacity::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url("https://images.unsplash.com/photo-1738090237225-4d9c7afc5287?q=80&w=3159&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   background-position: center;
-  opacity: 0.4; /* Adjust this value (0 to 1) */
+  opacity: 0.5;  /* Change this value for opacity control */
   z-index: -1;
-  pointer-events: none;
 }
+
 
 .slow-fade-screen {
   position: fixed;
@@ -144,7 +153,13 @@ She asked me if I wanted to go inside the coffee shop across the street.
 
 (after: 10s)[
   (goto: &quot;More about Arlene&quot;)
-]</tw-passagedata><tw-passagedata pid="3" name="Thomas" tags="" position="150,575" size="100,100">Thomas Keating who I was told was a school friend, and every now and then he would go to Julian&#39;s house for dinner to escape the quitness of his own home. Thomas had a showstar of a mother, who ended up dying in a freak accident at one of her performances. Ever since, Thomas had to move between aunts. until he ended up in the same neighbourhood as Julian and Edward. 
+]
+
+|backgroundPassage&gt;[This is the passage with a custom background.]
+
+(change: &quot;body&quot;&#39;s classes to [&quot;background-opacity&quot;])
+
+</tw-passagedata><tw-passagedata pid="3" name="Thomas" tags="" position="150,575" size="100,100">Thomas Keating who I was told was a school friend, and every now and then he would go to Julian&#39;s house for dinner to escape the quitness of his own home. Thomas had a showstar of a mother, who ended up dying in a freak accident at one of her performances. Ever since, Thomas had to move between aunts. until he ended up in the same neighbourhood as Julian and Edward. 
 
 He took the longest to convince to join us in the band.</tw-passagedata><tw-passagedata pid="4" name="More about Arlene" tags="" position="1200,350" size="100,100">I find it interesting that meeting one person could change the trajectory of your entire life. 
 
@@ -189,7 +204,7 @@ He raised his eyebrows and downed the rest of his drink, scrutinising me from ab
 
 (link-replace: &quot;Only after I went back up the stairs, into the bedroom I had claimed to be mine, and nestled under the covers&quot;)[Only after I went back up the stairs, into the bedroom I had claimed to be mine, and nestled under the covers, I realised he never answered my question.]
 
-</tw-passagedata><tw-passagedata pid="12" name="Course of action" tags="" position="375,800" size="100,100">Arthur told me about the conversation you had with him after you had finally released my hand and ran off stage in his direction. You whispered in his ear, ‘I know what you did.’ 
+f</tw-passagedata><tw-passagedata pid="12" name="Course of action" tags="" position="375,800" size="100,100">Arthur told me about the conversation you had with him after you had finally released my hand and ran off stage in his direction. You whispered in his ear, ‘I know what you did.’ 
 ‘What do you mean Arlene knows?’ I had asked Arthur after the guests cleared out. The opulent ballroom, intimate and mysterious, only illuminated by candlelight, was vacant. Chairs were scrapped back, some laying on their sides. My Mary Janes peeled off the wooden floor as I strode over to Arthur, remnant liquids stuck to the sole of my shoes. 
 Arthur ran a hand through his dishevelled hair, crushing a piece of broken glass underneath his Oxfords, ‘it means she knows, Estelle.’ 
 ‘How would she know? We made sure to make it look like it was a robbery. That James was just at the wrong place at the wrong time.’
