@@ -91,10 +91,18 @@ tw-story[tags~="background3"] {
   background: url('images/newspaper.jpg') center center / cover no-repeat fixed;
 }
 
+
 #responsive-map {
-  max-width: 100%;
+  width: 100vw;
   height: auto;
   display: block;
+}
+html, body, tw-story {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">function resizeMap() {
@@ -102,9 +110,9 @@ tw-story[tags~="background3"] {
   const map = document.querySelector('map[name="mymap"]');
   const areas = map.getElementsByTagName('area');
 
-  const originalWidth = img.naturalWidth;
+  if (!img || !img.complete) return;
 
-  if (!originalWidth) return;
+  const originalWidth = img.naturalWidth;
 
   const scale = img.clientWidth / originalWidth;
 
@@ -120,7 +128,6 @@ tw-story[tags~="background3"] {
 
 window.addEventListener('load', resizeMap);
 window.addEventListener('resize', resizeMap);
-
 
 
 // Harlowe Macro Framework, by Chapel; version 1.0.2
@@ -149,11 +156,10 @@ window.addEventListener('resize', resizeMap);
  });
 &lt;/script&gt;
 
-&lt;img src=&quot;your-entries.jpg&quot; usemap=&quot;#mymap&quot; id=&quot;responsive-map&quot; style=&quot;width: 100vw; height: auto;&quot; /&gt;
+&lt;img src=&quot;./images/entries.jpg&quot; usemap=&quot;#mymap&quot; id=&quot;responsive-map&quot; /&gt;
 
 &lt;map name=&quot;mymap&quot;&gt;
-  &lt;area shape=&quot;rect&quot; coords=&quot;50,50,150,150&quot; href=&quot;https://example.com&quot; alt=&quot;Box 1&quot;&gt;
-  &lt;area shape=&quot;circle&quot; coords=&quot;300,200,50&quot; href=&quot;https://example.com/2&quot; alt=&quot;Circle&quot;&gt;
+  &lt;area shape=&quot;rect&quot; coords=&quot;100,100,300,300&quot; href=&quot;https://example.com&quot; alt=&quot;Box&quot;&gt;
 &lt;/map&gt;
 
 
