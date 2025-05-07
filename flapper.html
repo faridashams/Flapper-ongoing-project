@@ -91,14 +91,35 @@ tw-story[tags~="background3"] {
   background: url('images/newspaper.jpg') center center / cover no-repeat fixed;
 }
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
- *  Desc: Resize HTML imageMap to scaled image.
- *  Copyright: (c) 2019 David J. Bradshaw - dave@bradshaw.net
- *  License: MIT
- */
+#responsive-map {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
-!function(){"use strict";function r(){function e(){var r={width:u.width/u.naturalWidth,height:u.height/u.naturalHeight},a={width:parseInt(window.getComputedStyle(u,null).getPropertyValue("padding-left"),10),height:parseInt(window.getComputedStyle(u,null).getPropertyValue("padding-top"),10)};i.forEach(function(e,t){var n=0;o[t].coords=e.split(",").map(function(e){var t=1==(n=1-n)?"width":"height";return a[t]+Math.floor(Number(e)*r[t])}).join(",")})}function t(e){return e.coords.replace(/ *, */g,",").replace(/ +/g,",")}function n(){clearTimeout(d),d=setTimeout(e,250)}function r(e){return document.querySelector('img[usemap="'+e+'"]')}var a=this,o=null,i=null,u=null,d=null;"function"!=typeof a._resize?(o=a.getElementsByTagName("area"),i=Array.prototype.map.call(o,t),u=r("#"+a.name)||r(a.name),a._resize=e,u.addEventListener("load",e,!1),window.addEventListener("focus",e,!1),window.addEventListener("resize",n,!1),window.addEventListener("readystatechange",e,!1),document.addEventListener("fullscreenchange",e,!1),u.width===u.naturalWidth&&u.height===u.naturalHeight||e()):a._resize()}function e(){function t(e){e&&(!function(e){if(!e.tagName)throw new TypeError("Object is not a valid DOM element");if("MAP"!==e.tagName.toUpperCase())throw new TypeError("Expected <MAP> tag, found <"+e.tagName+">.")}(e),r.call(e),n.push(e))}var n;return function(e){switch(n=[],typeof e){case"undefined":case"string":Array.prototype.forEach.call(document.querySelectorAll(e||"map"),t);break;case"object":t(e);break;default:throw new TypeError("Unexpected data type ("+typeof e+").")}return n}}"function"==typeof define&&define.amd?define([],e):"object"==typeof module&&"object"==typeof module.exports?module.exports=e():window.imageMapResize=e(),"jQuery"in window&&(window.jQuery.fn.imageMapResize=function(){return this.filter("map").each(r).end()})}();
-//# sourceMappingURL=imageMapResizer.map
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">function resizeMap() {
+  const img = document.getElementById('responsive-map');
+  const map = document.querySelector('map[name="mymap"]');
+  const areas = map.getElementsByTagName('area');
+
+  const originalWidth = img.naturalWidth;
+
+  if (!originalWidth) return;
+
+  const scale = img.clientWidth / originalWidth;
+
+  for (let area of areas) {
+    const originalCoords = area.dataset.originalCoords || area.coords;
+    area.dataset.originalCoords = originalCoords;
+
+    const coords = originalCoords.split(',').map(Number);
+    const scaled = coords.map(coord => Math.round(coord * scale));
+    area.coords = scaled.join(',');
+  }
+}
+
+window.addEventListener('load', resizeMap);
+window.addEventListener('resize', resizeMap);
 
 
 
@@ -128,13 +149,13 @@ tw-story[tags~="background3"] {
  });
 &lt;/script&gt;
 
-&lt;script&gt;
- $(&#39;area&#39;).on(&#39;click&#39;, function(e){
-   e.preventDefault();
-   Harlowe.goto(this.alt);
- });
- $(&#39;map&#39;).imageMapResize();
-&lt;/script&gt;
+&lt;img src=&quot;your-entries.jpg&quot; usemap=&quot;#mymap&quot; id=&quot;responsive-map&quot; style=&quot;width: 100vw; height: auto;&quot; /&gt;
+
+&lt;map name=&quot;mymap&quot;&gt;
+  &lt;area shape=&quot;rect&quot; coords=&quot;50,50,150,150&quot; href=&quot;https://example.com&quot; alt=&quot;Box 1&quot;&gt;
+  &lt;area shape=&quot;circle&quot; coords=&quot;300,200,50&quot; href=&quot;https://example.com/2&quot; alt=&quot;Circle&quot;&gt;
+&lt;/map&gt;
+
 
 &lt;div style=&quot;display:none;&quot;
 [[Why I left]]
