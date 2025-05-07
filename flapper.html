@@ -92,41 +92,45 @@ tw-story[tags~="background3"] {
 }
 
 
-.image-map-container {
-  width: 100%;
-  max-width: 100%;
-  position: relative;
-  text-align: center;
+.fullscreen-map-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-#passage-map {
-  width: 100%;
-  height: auto;
+#fullscreen-map {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   display: block;
-  margin: 0 auto;
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">function scaleImageMap() {
-  const img = document.getElementById('passage-map');
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">function scaleFullscreenMap() {
+  const img = document.getElementById('fullscreen-map');
   if (!img || !img.complete) return;
 
   const map = document.querySelector('map[name="mymap"]');
   const areas = map.getElementsByTagName('area');
   const naturalWidth = img.naturalWidth;
+  const naturalHeight = img.naturalHeight;
 
-  const scale = img.clientWidth / naturalWidth;
+  const widthScale = img.clientWidth / naturalWidth;
+  const heightScale = img.clientHeight / naturalHeight;
 
   for (let area of areas) {
     const original = area.dataset.originalCoords || area.coords;
     area.dataset.originalCoords = original;
 
     const coords = original.split(',').map(Number);
-    const scaled = coords.map(c => Math.round(c * scale));
+    const scaled = coords.map((c, i) => i % 2 === 0 ? Math.round(c * widthScale) : Math.round(c * heightScale));
     area.coords = scaled.join(',');
   }
 }
 
-window.addEventListener('load', scaleImageMap);
-window.addEventListener('resize', scaleImageMap);
+window.addEventListener('load', scaleFullscreenMap);
+window.addEventListener('resize', scaleFullscreenMap);
 
 
 // Harlowe Macro Framework, by Chapel; version 1.0.2
@@ -148,13 +152,14 @@ window.addEventListener('resize', scaleImageMap);
     &lt;area target=&quot;&quot; alt=&quot;News paper clipping&quot; title=&quot;News paper clipping&quot; href=&quot;&quot; coords=&quot;716,603,1228,689&quot; shape=&quot;rect&quot;&gt;
 &lt;/map&gt;
 
-&lt;div class=&quot;image-map-container&quot;&gt;
-  &lt;img src=&quot;./images/entries.jpg&quot; usemap=&quot;#mymap&quot; id=&quot;passage-map&quot; /&gt;
+&lt;div class=&quot;fullscreen-map-container&quot;&gt;
+  &lt;img src=&quot;./images/entries.jpg&quot; usemap=&quot;#mymap&quot; id=&quot;fullscreen-map&quot; /&gt;
   
   &lt;map name=&quot;mymap&quot;&gt;
-    &lt;area shape=&quot;rect&quot; coords=&quot;100,100,300,300&quot; href=&quot;https://example.com&quot; alt=&quot;Example Area&quot;&gt;
+    &lt;area shape=&quot;rect&quot; coords=&quot;100,100,300,300&quot; href=&quot;https://example.com&quot; alt=&quot;Clickable area&quot;&gt;
   &lt;/map&gt;
 &lt;/div&gt;
+
 
 
 &lt;script&gt;
