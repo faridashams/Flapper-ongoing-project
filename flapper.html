@@ -129,12 +129,24 @@ body.image-map-mode tw-passage {
   const widthScale = img.clientWidth / naturalWidth;
   const heightScale = img.clientHeight / naturalHeight;
 
+  // Account for the top shift (negative margin) from CSS
+  const verticalShift = -25; // This is the same as the 'top' property in CSS
+
   for (let area of areas) {
     const original = area.dataset.originalCoords || area.coords;
     area.dataset.originalCoords = original;
 
     const coords = original.split(',').map(Number);
-    const scaled = coords.map((c, i) => i % 2 === 0 ? Math.round(c * widthScale) : Math.round(c * heightScale));
+    const scaled = coords.map((c, i) => {
+      if (i % 2 === 0) {
+        // Scale the X coordinates
+        return Math.round(c * widthScale);
+      } else {
+        // Scale the Y coordinates and adjust for the vertical shift
+        return Math.round((c * heightScale) + verticalShift);
+      }
+    });
+
     area.coords = scaled.join(',');
   }
 }
