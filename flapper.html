@@ -99,13 +99,19 @@ tw-story[tags~="background3"] {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  z-index: 10; /* Raised so it's clickable */
 }
+
 
 #fullscreen-map {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
   display: block;
+}
+
+tw-story, tw-passage {
+  pointer-events: none;
 }
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">function scaleFullscreenMap() {
   const img = document.getElementById('fullscreen-map');
