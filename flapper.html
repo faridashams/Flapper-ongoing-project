@@ -92,42 +92,41 @@ tw-story[tags~="background3"] {
 }
 
 
-#responsive-map {
-  width: 100vw;
+.image-map-container {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+#passage-map {
+  width: 100%;
   height: auto;
   display: block;
+  margin: 0 auto;
 }
-html, body, tw-story {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">function resizeMap() {
-  const img = document.getElementById('responsive-map');
-  const map = document.querySelector('map[name="mymap"]');
-  const areas = map.getElementsByTagName('area');
-
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">function scaleImageMap() {
+  const img = document.getElementById('passage-map');
   if (!img || !img.complete) return;
 
-  const originalWidth = img.naturalWidth;
+  const map = document.querySelector('map[name="mymap"]');
+  const areas = map.getElementsByTagName('area');
+  const naturalWidth = img.naturalWidth;
 
-  const scale = img.clientWidth / originalWidth;
+  const scale = img.clientWidth / naturalWidth;
 
   for (let area of areas) {
-    const originalCoords = area.dataset.originalCoords || area.coords;
-    area.dataset.originalCoords = originalCoords;
+    const original = area.dataset.originalCoords || area.coords;
+    area.dataset.originalCoords = original;
 
-    const coords = originalCoords.split(',').map(Number);
-    const scaled = coords.map(coord => Math.round(coord * scale));
+    const coords = original.split(',').map(Number);
+    const scaled = coords.map(c => Math.round(c * scale));
     area.coords = scaled.join(',');
   }
 }
 
-window.addEventListener('load', resizeMap);
-window.addEventListener('resize', resizeMap);
+window.addEventListener('load', scaleImageMap);
+window.addEventListener('resize', scaleImageMap);
 
 
 // Harlowe Macro Framework, by Chapel; version 1.0.2
@@ -149,6 +148,15 @@ window.addEventListener('resize', resizeMap);
     &lt;area target=&quot;&quot; alt=&quot;News paper clipping&quot; title=&quot;News paper clipping&quot; href=&quot;&quot; coords=&quot;716,603,1228,689&quot; shape=&quot;rect&quot;&gt;
 &lt;/map&gt;
 
+&lt;div class=&quot;image-map-container&quot;&gt;
+  &lt;img src=&quot;./images/entries.jpg&quot; usemap=&quot;#mymap&quot; id=&quot;passage-map&quot; /&gt;
+  
+  &lt;map name=&quot;mymap&quot;&gt;
+    &lt;area shape=&quot;rect&quot; coords=&quot;100,100,300,300&quot; href=&quot;https://example.com&quot; alt=&quot;Example Area&quot;&gt;
+  &lt;/map&gt;
+&lt;/div&gt;
+
+
 &lt;script&gt;
  $(&#39;area&#39;).on(&#39;click&#39;, function(e){
    e.preventDefault();
@@ -156,11 +164,6 @@ window.addEventListener('resize', resizeMap);
  });
 &lt;/script&gt;
 
-&lt;img src=&quot;./images/entries.jpg&quot; usemap=&quot;#mymap&quot; id=&quot;responsive-map&quot; /&gt;
-
-&lt;map name=&quot;mymap&quot;&gt;
-  &lt;area shape=&quot;rect&quot; coords=&quot;100,100,300,300&quot; href=&quot;https://example.com&quot; alt=&quot;Box&quot;&gt;
-&lt;/map&gt;
 
 
 &lt;div style=&quot;display:none;&quot;
