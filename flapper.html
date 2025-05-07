@@ -95,7 +95,7 @@ tw-story[tags~="background3"] {
 /* Fullscreen container for the image map */
 .custom-fullscreen-map {
   position: fixed;
-  top: 0;
+  top: -10px; /* Move image 10px up */
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -110,6 +110,7 @@ tw-story[tags~="background3"] {
   object-fit: cover;
   display: block;
 }
+
 
 /* Hide everything except the fullscreen image map */
 body.image-map-mode tw-story,
