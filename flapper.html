@@ -92,12 +92,13 @@ tw-story[tags~="background3"] {
 }
 
 
-/* Only hide story UI when this class is present */
+/* Hide everything except the fullscreen image map */
 body.image-map-mode tw-story,
 body.image-map-mode tw-passage {
   display: none;
 }
 
+/* Fullscreen container for the image */
 .custom-fullscreen-map {
   position: fixed;
   top: 0;
@@ -105,9 +106,10 @@ body.image-map-mode tw-passage {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  z-index: 1000; /* Make sure it's on top */
+  z-index: 1000;
 }
 
+/* Fullscreen image with scaling */
 #fullscreen-map {
   width: 100vw;
   height: 100vh;
@@ -142,7 +144,7 @@ window.addEventListener('resize', scaleFullscreenMap);
 // Automatically enable image-map mode on matching passages
 document.addEventListener("DOMContentLoaded", () => {
   const passageTitle = document.querySelector('tw-passage')?.getAttribute('name');
-  if (passageTitle === "Journal entries") {
+  if (passageTitle === "Journal entries") { // Replace with your passage name
     document.body.classList.add('image-map-mode');
   } else {
     document.body.classList.remove('image-map-mode');
@@ -173,8 +175,9 @@ document.addEventListener("DOMContentLoaded", () => {
 &lt;div class=&quot;custom-fullscreen-map&quot;&gt;
   &lt;img src=&quot;./images/entries.jpg&quot; usemap=&quot;#mymap&quot; id=&quot;fullscreen-map&quot; /&gt;
 
-  &lt;map name=&quot;mymap&quot;&gt;
-    &lt;area shape=&quot;rect&quot; coords=&quot;100,100,300,300&quot; href=&quot;https://example.com&quot; alt=&quot;Clickable area&quot;&gt;
+  &lt;map name=&quot;entries&quot;&gt;
+    &lt;area shape=&quot;rect&quot; coords=&quot;100,100,300,300&quot; href=&quot;https://example.com&quot; alt=&quot;Clickable Area 1&quot;&gt;
+    &lt;area shape=&quot;rect&quot; coords=&quot;350,100,550,300&quot; href=&quot;https://example2.com&quot; alt=&quot;Clickable Area 2&quot;&gt;
   &lt;/map&gt;
 &lt;/div&gt;
 
