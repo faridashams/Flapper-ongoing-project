@@ -64,6 +64,12 @@ tw-story {
   min-height: 100vh;
 }
 
+
+/* Specific background for tagged passages */
+tw-story[tags~="background10"] {
+  background: url('https://i.pinimg.com/736x/16/f8/b4/16f8b4de763ec753ec8983ad360c67b1.jpg') center center / cover no-repeat fixed;
+}
+
 /* Specific background for tagged passages */
 tw-story[tags~="background2"] {
   background: url('https://images.unsplash.com/photo-1738090237225-4d9c7afc5287?q=80&w=3159&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover no-repeat fixed;
@@ -76,6 +82,10 @@ tw-story[tags~="background2"] {
 
 }
 
+
+background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('images/arlene.jpg') center center / cover no-repeat fixed;
+
+
 tw-story[tags~="background2"] {
   color: white;
 }
@@ -84,26 +94,6 @@ tw-story[tags~="background2"] {
 .tw-passage[data-passage="background2"] {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-
-
-/*
-.slow-fade-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  animation: slowFadeToBlack 120s forwards;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-@keyframes slowFadeToBlack {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-*/
 
 tw-story[tags~="background3"] {
   background: url('images/newspaper.jpg') center center / cover no-repeat fixed;
@@ -117,10 +107,6 @@ tw-story[tags~="background5"] {
 
 tw-story[tags~="background6"] {
   background: url('images/house.jpg') center center / cover no-repeat fixed;
-}
-
-tw-story[tags~="background10"] {
-  background: url('images/arthurestelle.jpg') center center / cover no-repeat fixed;
 }
 
 /*i dont think this worked. check later*/
@@ -141,7 +127,7 @@ tw-story[tags~="background10"] {
     audio.volume = 0.2;
     audio.play();
 };
-</script><tw-tag name="firstpage" color="red"></tw-tag><tw-tag name="background1" color="green"></tw-tag><tw-passagedata pid="1" name="back to entries" tags="background4" position="600,300" size="100,100">[[Why I left]]
+</script><tw-tag name="firstpage" color="red"></tw-tag><tw-tag name="background1" color="green"></tw-tag><tw-tag name="background10" color="green"></tw-tag><tw-tag name="background12" color="purple"></tw-tag><tw-tag name="background13" color="purple"></tw-tag><tw-tag name="background14" color="purple"></tw-tag><tw-tag name="background15" color="purple"></tw-tag><tw-tag name="background3" color="green"></tw-tag><tw-tag name="background2" color="green"></tw-tag><tw-tag name="background7" color="purple"></tw-tag><tw-passagedata pid="1" name="back to entries" tags="background4" position="600,300" size="100,100">[[Why I left]]
 [[Arlene]]
 [[House of horrors]]
 [[Enigma]] 
@@ -170,34 +156,50 @@ I hesitated ringing my mother, not knowing whether my father was hovering over t
 
 She asked me if I wanted to go inside the coffee shop across the street. (click-append:&quot;She asked me if I wanted to go inside the coffee shop across the street.&quot;) [
 
-//Have a drink with me//, she said.]
+//[[Have a drink with me]]//, she said.]
+&lt;audio src=&quot;./audio/newyorkstreet.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="3" name="Thomas Keating" tags="background12" position="150,575" size="100,100">I was leaning aganist the kitchen counter, a glass of soda in my hand, and in an //engaging// conversation with one of Julian&#39;s aunts. I plastered on a smile and nodded when it was appropriate, but my eyes were trained on the front door that had just opened.(click-append:&quot;but my eyes were trained on the front door that had just opened.&quot;) [
 
-[[More about Arlene]] 
-&lt;audio src=&quot;./audio/newyorkstreet.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
+Walked in a boy, about six foot from what I could see. Dark haired, square jaw, and tanned smooth skin with the occasional mole. He was very handsome, with expressive eyes and a smile that took up the entire room. The boy wore one of those thick brown wool sweaters one might see on a tennis court at Wimbeldon, layered over a cream button down and dark slacks.
 
-&lt;!--See if i want to add this fade in transition later
-|fade&gt;[ ]
+He was walking smoothly through the throngs of family, friends, and little kids, stopping to greet a few men with a firm handshake, and moving on to approach the group of ladies standing close to where I was. He bowing his head in greeting, flashing them a charming smile.] (click-append:&quot;flashing them a charming smile.&quot;) [
 
-(after: 6s)[
-  (replace: ?fade)[&lt;div class=&quot;slow-fade-screen&quot;&gt;&lt;/div&gt;]
-]
+//Who is that?// I asked Julian&#39;s aunt, who had stopped hear speal to stare at the boy.] (click-append:&quot;Who is that? I asked Julian&#39;s aunt, who had stopped hear speal to stare at the boy.&quot;) [
 
-(after: 120s)[
-  (goto: &quot;More about Arlene&quot;)
-]--&gt;
+//Thomas Keating,// she said. //One of Julian and Edward&#39;s close friend. He lives down the street.//] (click-append:&quot;Thomas Keating, she said. One of Julian and Edward&#39;s close friend. He lives down the street.&quot;) [
 
+Thomas Keating threw his head back, laughing at something one of the ladies had said.
 
+Julian&#39;s aunt fanned her face and whispered to me, //isn&#39;t he demure?//] (click-append:&quot;isn&#39;t he demure?&quot;) [
 
+The demurest.] (click-append:&quot;The demurest.&quot;) [
 
-</tw-passagedata><tw-passagedata pid="3" name="Thomas Keating" tags="" position="150,575" size="100,100">I was leaning aganist the kitchen counter, a glass of soda in my hand, and in an //engaging// conversation with one of Julian&#39;s aunts. I plastered on a smile and nodded when it was appropriate, but eyes were trained on the front door that had just opened.(click-append:&quot;but eyes were trained on the front door that had just opened.&quot;) [
+And in that moment, we made eye contact. He excused the ladies and made his way to me, stopping in front of me. From close range, I could count how many moles were on his face. //Five.//] (click-append:&quot;Five.&quot;) [
 
+//Hello,// I said.] (click-append:&quot;Hello, I said.&quot;) [
 
+He grinned, eyes glittering. //How do you do, Miss...//] (click-append:&quot;How do you do, Miss...&quot;) [
 
+Forrest. Estelle Forrest.] (click-append:&quot;Forrest. Estelle Forrest.&quot;) [
 
+He gently took my right hand in his, planting a featherlight kiss to the back of it.] (click-append:&quot;planting a featherlight kiss to the back of it.&quot;) [
 
-Thomas Keating who I was told was a school friend, and every now and then he would go to Julian&#39;s house for dinner to escape the quitness of his own home. Thomas had a showstar of a mother, who ended up dying in a freak accident at one of her performances. Ever since, Thomas had to move between aunts. until he ended up in the same neighbourhood as Julian and Edward. 
+//Ah, so you&#39;re Estelle.//] (click-append:&quot;Ah, so you&#39;re Estelle.&quot;) [
 
-He took the longest to convince to join us in the band.</tw-passagedata><tw-passagedata pid="4" name="More about Arlene" tags="background5" position="1200,350" size="100,100">I find it interesting that meeting one person could change the trajectory of your entire life. 
+//Yes? Am I being spoken about?//] (click-append:&quot;Yes? Am I being spoken about?&quot;) [
+
+//You could say that. Edward and Julian mentioned you.//] (click-append:&quot;You could say that. Edward and Julian mentioned you.&quot;) [
+
+//Have they now? I wonder what they said. I&#39;ve been told I&#39;m unpleasent to be around.//] (click-append:&quot;Have they now? I wonder what they said. I&#39;ve been told I&#39;m unpleasent to be around.&quot;) [
+
+Thomas barked out a laugh, as if he was surprised I admitted that. It made me smile.] (click-append:&quot;It made me smile.&quot;) [
+
+//Nonsense!// He grinned. //They said no such thing. And I don&#39;t believe whoever said you&#39;re unpleasant. I think you&#39;re a delight.//
+
+That made my heart and stomach soar, and I found myself spending the rest of the evening with him. 
+
+~~ I liked how I felt in his prescence.~~]
+
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="4" name="Have a drink with me" tags="background5" position="1200,350" size="100,100">I find it interesting that meeting one person could change the trajectory of your entire life. 
 
 This is what I knew about Arlene Levard: she grew up with a devoted mother and a loving father. Her father passed away ~~I wish that was my situation~~ when she was fourteen. Her mother, who was deep in financial stress, married Daniel Chapman, the head of Police department in New York. He had a son, Arthur. (click-replace: &quot;Arthur.&quot;) [ I believe that is when Arlene&#39;s paranoia began.]
 
@@ -205,13 +207,13 @@ She was a sweet girl, the smile never leaving her face. She would shake a strang
 
 The more time I spent with her, //especially// at the Chapman-Levard house, I noticed how unlike herself she was there. (click-append: &quot;I noticed how unlike herself she was there.&quot;) [ She slept with one eye open, her bedroom door locked at all times. Vigilant. Looking over her shoulder. Never sitting still, never wanting to be in the same room as Arthur. I noticed on countless occasions how she would flinch at the sound of his voice, or jump at the sound of his laugh.] 
 
-In that house, she was the opposite of the girl I knew outside of it. (click-append: &quot;she was the opposite of the girl I knew outside of it&quot;) [ It could have been Arthur&#39;s influence, ~~or mine~~...no definitely Arthur&#39;s.]
+In that house, she was the opposite of the girl I knew outside of it. (click-append: &quot;she was the opposite of the girl I knew outside of it.&quot;) [ It could have been Arthur&#39;s influence, ~~or mine~~...no definitely Arthur&#39;s.]
 
 I tried to be there for her as much as I could, but she pushed me away at times. So, I left it alone.
 
 A person changing another&#39;s life trajectory.
 
-//[[Enigma]]//</tw-passagedata><tw-passagedata pid="5" name="Genevieve" tags="" position="225,900" size="100,100">It was a beautiful morning in the Chapman-Levard house. The sun dipped just right. The perfect temprature.
+//[[Enigma]]//</tw-passagedata><tw-passagedata pid="5" name="Genevieve" tags="background13" position="225,900" size="100,100">It was a beautiful morning in the Chapman-Levard house. The sun dipped just right. The perfect temprature.
 
 Arlene and I were laying down on chaise longues, a frosted glass of Tom Collins was cradled in my hands, my fingers slick with condensation. A wide brimmed yellow straw hat was rested on my head, shielding my eyes from the sun.
 
@@ -225,7 +227,9 @@ I placed my palm in hers, one shake up and down. They were soft and porcelain li
 
 Later when it was just myself and Arlene tucked in the same bed in the night that I learned Arlene and Genevieve used to take piano lessons in the afternoon after school hours. Genevieve Everett had a boringly normal family dynamic. Her father died of a rare disease when she was three years old, and her mother never remarried. 
 
-I have always wondered what it was like to live without a father. (click-append: &quot;live without a father.&quot;) [ She was lucky in that sense.]</tw-passagedata><tw-passagedata pid="6" name="Edward, Julian, and Thomas" tags="" position="75,775" size="100,100">I had mentioned in running to Genevieve about my dreams of having a musical group of my own. I never felt like I belonged elsewhere. Music is what made me, me. 
+I have always wondered what it was like to live without a father. (click-append: &quot;live without a father.&quot;) [ She was lucky in that sense.]
+
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="6" name="Edward, Julian, and Thomas" tags="background14" position="75,775" size="100,100">I had mentioned in running to Genevieve about my dreams of having a musical group of my own. I never felt like I belonged elsewhere. Music is what made me, me. 
 
 Over cups of tea on an early July morning at a local coffee shop she loves, she gave me a smile that rivaled the sun and held my ever cold hands in her own warm ones. (click-append:&quot;warm ones.&quot;) [
 
@@ -235,13 +239,15 @@ I haven&#39;t written since my conversation with Genevieve which was exactly a w
 
 Here is what I know about Edward Sylvester and Julian Kingsley: (click-append:&quot;Edward Sylvester and Julian Kingsley:&quot;) [
 
-Always a pair, came and left as a pair. They grew up on the same steet, in houses with the large picket white fences, weekly cookouts, and golden retrievers running around, the life I wanted to have.
+Always a pair, came and left as a pair. They grew up on the same street, in houses with the large picket white fences, weekly cookouts, and golden retrievers running around, the life I wanted to have.
 
 Edward had a small family. Just him, his parents, and a younger sister. He spent most of his days at Julian&#39;s house.
 
 Julian&#39;s family in comparison, was large. He had many siblings and even more cousins that were present at all time. The day we met at his house, I had one sbibling clink onto my leg, while a cousin tugged on my hair. It didn&#39;t matter to them that I was a stranger standing inside their house. ~~It made me want to crawl out of my skin.~~ 
 
-Luckily however, at that one specific gathering, I happened to meet a [[Thomas Keating]].] </tw-passagedata><tw-passagedata pid="7" name="start here" tags="firstpage" position="600,50" size="100,100">Could compulsivity be considered a fatal flaw?
+Luckily however, at that one specific gathering, I happened to meet a [[Thomas Keating]].] 
+
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="7" name="start here" tags="firstpage" position="600,50" size="100,100">Could compulsivity be considered a fatal flaw?
 
 Achilles&#39; fatal flaw was his pride, anger, and overconfidence. Icaurs&#39; fatal flaw was his arrogance and exhilaration. And mine? (click-append: &quot;And mine?&quot;) [ Mine is wanting all or nothing.]
 
@@ -269,7 +275,7 @@ One morning during breakfast time, it was just me and Arlene at the dining table
 
 Arlene gave the hallway Arthur disappeared into a scathing look before glancing back at me.] (click-append:&quot;Arlene gave the hallway Arthur disappeared into a scathing look before glancing back at me.&quot;) [ //It’s been like this for years. We barely tolerate each other. I think he hates me more than I hate him.//] (click-append:&quot;I think he hates me more than I hate him.&quot;) [
 
-She placed her teacup on the surface and leaned across the table closer to me,] (click-append:&quot;She placed her teacup on the surface and leaned across the table closer to me,&quot;)  [ //honestly, Estelle. I’m waiting for my mum to tire of his dad so we can leave this house. I’m never comfortable here, it’s like I’m waiting for some kind of disaster to happen.//]</tw-passagedata><tw-passagedata pid="9" name="Ensemble" tags="" position="300,625" size="100,100">Never having friends as a child proved to take great effect on me as a teenager and through my adult life. (click-append:&quot;teenager and through my adult life.&quot;) [ I was called blasé, aloof, and unapproachable.] I didn&#39;t think, and //don&#39;t// think that is true, but to each his own.
+She placed her teacup on the surface and leaned across the table closer to me,] (click-append:&quot;She placed her teacup on the surface and leaned across the table closer to me,&quot;)  [ //honestly, Estelle. I’m waiting for my mum to tire of his dad so we can leave this house. I’m never comfortable here, it’s like I’m waiting for some kind of disaster to happen.//]</tw-passagedata><tw-passagedata pid="9" name="Ensemble" tags="background15" position="300,625" size="100,100">Never having friends as a child proved to take great effect on me as a teenager and through my adult life. (click-append:&quot;teenager and through my adult life.&quot;) [ I was called blasé, aloof, and unapproachable.] I didn&#39;t think, and //don&#39;t// think that is true, but to each his own.
 
 I suppose, then, it wasn&#39;t so difficult to understand why I was quick to attach myself to my friends, and to their lives as I knew it. Their lives, no matter chaotic or loved, seemed fullfiling to me. (click-append:&quot;fullfiling to me&quot;) [
 
