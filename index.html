@@ -132,7 +132,12 @@ tw-story[tags~="background6"] {
 .green-hover:hover {
   color: #50C878; /* Emerald green */
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="firstpage" color="red"></tw-tag><tw-tag name="background1" color="green"></tw-tag><tw-passagedata pid="1" name="back to entries" tags="background4" position="600,300" size="100,100">[[Why I left]]
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">window.playLowVolumeAudio = function() {
+    var audio = new Audio("breakfast.mp3");
+    audio.volume = 0.2;
+    audio.play();
+};
+</script><tw-tag name="firstpage" color="red"></tw-tag><tw-tag name="background1" color="green"></tw-tag><tw-passagedata pid="1" name="back to entries" tags="background4" position="600,300" size="100,100">[[Why I left]]
 [[Arlene]]
 [[House of horrors]]
 [[Enigma]] 
