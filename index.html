@@ -139,6 +139,31 @@ body {
 .green-hover:hover {
   color: #50C878; /* Emerald green */
 }
+
+
+
+
+
+@keyframes flashEffect {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  20% { opacity: 0; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.flash-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  opacity: 0;
+  z-index: 1000;
+  animation: flashEffect 1s ease-in-out;
+  pointer-events: none;
+}
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
  *  Desc: Resize HTML imageMap to scaled image.
  *  Copyright: (c) 2019 David J. Bradshaw - dave@bradshaw.net
@@ -173,27 +198,6 @@ body {
 &lt;/map&gt;
 
 
-&lt;!-- Fullscreen background image --&gt;
-&lt;div style=&quot;position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1;&quot;&gt;
-  &lt;img src=&quot;images/entries.jpg&quot; style=&quot;width:100%; height:100%; object-fit:cover;&quot; /&gt;
-&lt;/div&gt;
-
-&lt;!-- Transparent clickable regions --&gt;
-&lt;div style=&quot;position:absolute; top:10%; left:10%; width:15%; height:15%;&quot; class=&quot;clickbox&quot; data-goto=&quot;Arlene&quot;&gt;&lt;/div&gt;
-&lt;div style=&quot;position:absolute; top:50%; left:45%; width:10%; height:10%;&quot; class=&quot;clickbox&quot; data-goto=&quot;Enigma&quot;&gt;&lt;/div&gt;
-
-&lt;!-- Click logic --&gt;
-&lt;script&gt;
-  document.querySelectorAll(&#39;.clickbox&#39;).forEach(function(box) {
-    box.style.cursor = &quot;pointer&quot;;
-    box.addEventListener(&quot;click&quot;, function() {
-      let passage = box.getAttribute(&quot;data-goto&quot;);
-      if (typeof Wikifier !== &quot;undefined&quot; &amp;&amp; State &amp;&amp; passage) {
-        Engine.play(passage);
-      }
-    });
-  });
-&lt;/script&gt;
 
 
 
@@ -435,7 +439,7 @@ Arthur didn’t respond for a few beats.
 	I was thinking many different thoughts. Perhaps you’ll get scared and stay silent, perhaps you’ll forget what happened and move on. You hadn’t known James for that long, surly his death wasn’t that big of a heartbreak. 
 But I misjudged how fast you fell in love with him.   
 You knowing what happened was a huge risk I wasn’t willing to take, neither was Arthur. We were at a good point in our career, and I wasn’t about to lose it all.  
-I looked at Arthur, only one solution coming to mind to make sure you’d stay quiet, and what he found in my gaze had him grinning, but not the soft welcoming grin that would put you at ease, it was the kind of cold calculating grin, the slow curve of his lips that only shows when he’s about to turn over a winning card.</tw-passagedata><tw-passagedata pid="12" name="Our last show" tags="" position="825,775" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Realisations" tags="" position="325,1025" size="100,100">I remember the sound of my heartbeat being loud in my ears, my pearl sautoir necklace dangled in the air in front of me. Your hand was in mine, clutching it to the point I felt my circulation cut short. 
+I looked at Arthur, only one solution coming to mind to make sure you’d stay quiet, and what he found in my gaze had him grinning, but not the soft welcoming grin that would put you at ease, it was the kind of cold calculating grin, the slow curve of his lips that only shows when he’s about to turn over a winning card.</tw-passagedata><tw-passagedata pid="12" name="Our last show" tags="" position="700,800" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Realisations" tags="" position="325,1025" size="100,100">I remember the sound of my heartbeat being loud in my ears, my pearl sautoir necklace dangled in the air in front of me. Your hand was in mine, clutching it to the point I felt my circulation cut short. 
 The muffled sound of rain and the roar of the crowd as we stood from our bow inflicted a dull ache in my temple. You grasped my hand in guidance, Arthur’s presence looming over both of us. I turned toward you, a frightened look on your face. 
 Arthur was leaning on the bar, resting his full weight on his elbow, nursing an Old Fashioned. His posture was of someone that exuded nonchalant confidence, the straight back, the high raised chin. Arthur, who perched on the balls of his feet so that he can make quick exits in uncomfortable situations. 
 
@@ -561,7 +565,10 @@ My arms were around his waist before he could finish his sentence.]
 
 &lt;audio src=&quot;./audio/breakfast.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
 
-(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="21" name="Rise to fame" tags="" position="125,325" size="100,100"></tw-passagedata></tw-storydata>
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="21" name="Rise to fame" tags="" position="850,825" size="100,100">camera flashes 
+
+&lt;div class=&quot;flash-overlay&quot;&gt;&lt;/div&gt;
+</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
