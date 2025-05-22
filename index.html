@@ -31,14 +31,48 @@ tw-passage {
   width: 100%;
 }
 
-tw-link, tw-link:link, tw-link:visited, tw-link.visited {
-  color: #FFF;
-  text-decoration: underline;
+
+tw-link,
+
+tw-link:link,
+
+tw-link:visited,
+
+tw-link:hover,
+
+tw-link:active,
+
+tw-link.visited,
+
+tw-link.visited:hover,
+
+.enchantment-link,
+
+tw-hook[class*="link"],
+
+a.enchantment-link {
+
+  color: #880808 !important;
+
+ 
+
 }
-tw-link:focus, tw-link:hover, tw-link:active, tw-link.visited:hover {
-  color: #FFF;
-  text-decoration: none;
+
+ 
+
+/* Targets the internal span that Harlowe sometimes uses */
+
+tw-link span,
+
+.enchantment-link span {
+
+  color: #880808 !important;
+
+  text-decoration: underline !important;
+
 }
+
+
 tw-passage {
   padding-bottom: 200px;}
 
@@ -177,7 +211,17 @@ body {
     margin: 0 auto 0 auto !important;
     padding: 0 !important;
     display: block !important;
-  }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
+  }
+
+
+
+
+
+
+/* Add this to your Story Stylesheet */
+tw-hook {
+  transition: opacity 3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
  *  Desc: Resize HTML imageMap to scaled image.
  *  Copyright: (c) 2019 David J. Bradshaw - dave@bradshaw.net
  *  License: MIT
@@ -463,36 +507,59 @@ To be honest, I didn’t expect you to have fallen for James’ advances. He was
 Now when I think about the night of your death, it makes sense why you were clutching my hand as if your life depended on it, and staring at Arthur in horror. You thought I would be able to save you from him. Because you saw the good in people, in me, you thought I wasn’t involved with James’ death, that I was merely there because Arthur coerced me, blackmailed me. And I suppose you were right to doubt my involvement, because why would your best friend have a hand in your lover’s death?</tw-passagedata><tw-passagedata pid="14" name="Fatal flaw" tags="" position="600,925" size="100,100">Myself and Arthur had exploited low paid officers to keep the speakeasy a secret, though from what I knew, other speakeasies were doing the same, so I never understood why it was such a problem when we did it. All I have ever wanted was for us to succeed. I wanted us to be the highlight of every conversation. I wanted the speakeasy to be full to the brim of people who were there just to see us perform. And keeping the speakeasy hidden, and occasionally pointing fingers at competition and whispering in officials’ ears was the only way we were going to reach that. You can hardly blame me, right?   
 James was clever, I’ll give him that, but he wasn’t clever enough. Arthur slowly befriended James, and nobody could go up against Arthur’s charm and walk away unscathed. Arthur, James and I would sit around tables with candles flickering in glass holders, clinking flutes of champagne and laughing as if we were old friends. We fabricated a lie about how we wanted to close this specific speakeasy since the owner was mistreating us and was not paying us what we deserved. It makes me laugh now how easy it was for James to trust and believe us. How can someone like him ever be an undercover? It was absurd, but it worked in our favour.
  Arthur had asked James to meet us at an alleyway far from the secret door that let down to the speakeasy to finalise our plan of ‘raiding the speakeasy’ with his Official friends. Arthur did not hesitate to drive that knife in his gut, and I stood watching, guilt gnawing at my stomach, but I did nothing to stop him.
-</tw-passagedata><tw-passagedata pid="15" name="How did it end???" tags="" position="475,1075" size="100,100">I knew at some point you’d come and confront me; I was the one person you could easily talk to. I left Arthur and went to the dressing room you and I shared to change out of my stage outfit. I was facing the mirror, working on untangling my head piece from my hair, when you walked in. 
-‘Hello’, I said, turning to give you a brief smile before facing the mirror once more. ‘What are you doing here? I thought everybody left.’
-‘We’re all still here. Everybody is getting changed before we leave’, you said, shutting the door behind you and walking further into the room, the gold ruffles of your dress moving with you.
-  ‘Good’, I said, placing my head piece on the dresser. ‘We can leave together’.
-I could see you observing me, as if you wanted me to admit it first before you mentioned anything. But I wasn’t going to be the one to bring it up. As far as you knew, I was pressured by Arthur. 
-‘Do you have something to say to me?’ I said, turning to look at you, giving you my best smile.
-‘You know what Arthur did, right?’ you said.
-‘Did what?’
-‘Don’t be obtuse, Estelle. I saw you there with him.’
-I frowned, crossing my arms against my chest, ‘I’m confused, Arlene. You saw me where?’
-‘I saw what you did to James!’ you said, your voice reaching a higher pitch. ‘I saw what he did!’
-‘Oh’, I laughed and relaxed against the dresser. ‘That.’
-‘You’re laughing?’ you scoffed, nearing me. ‘Have you gone insane?’ 
-‘You’re the one acting hysterical.’
-‘Because you killed him!’
-‘Oh no,’ I shook my head. ‘I didn’t do any killing. Don’t put this on me.’
-You took a colossal step back from me, as if I had slapped you across the face. You stared at me, mouth agape and eyes wide. 
-You kept shaking your head, retreating backwards slowly, ‘What is wrong with you?’  
-I shrugged and turned back to the mirror, looking at my reflection and fixing a lipstick smudge, ‘nothing.’
-I could hear you crying and I looked at you through the mirror to see you clutching your chest. I tried to console you, but you wouldn’t let me. 
-‘Don’t touch me!’ you screamed and scrambled away from me, nearing the dressing room door. 
-‘Arlene, listen to me. James didn’t love you.’
-‘Yes, he did!’ 
-‘No,’ I insisted. ‘He didn’t. He was using you to get information so him and the higher ups can raid the speakeasy and arrest everybody in it. Did you really want that to happen?’ You stayed quiet, so I went on, ‘we did what we had to do to save ourselves. To save you.’
-‘You’re lying,’ you said under your breath, shaking your head. ‘For once in your life, stop lying.’
-You never came out of that dressing room, never went past the secret door of the speakeasy. 
-Genevieve was the one to find you. She went looking for us because we had taken too long. Arthur walked inside, and knelt beside me, looking down at his unmoving step-sister. We shared a brief glance. He checked for a pulse, but he didn’t have to. 
-It was the last time I ever saw you. Kneeling beside your bleeding body, clutching your hand in mine.  
-Arthur unbuttoned his suit jacket and draped it around my shoulders. I pulled it tight against my body.
- And hoped no one else saw the blood spatter on my dress. </tw-passagedata><tw-passagedata pid="16" name="News paper clipping" tags="background3" position="1000,1075" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="turn the hardcover page" tags="background1" position="600,175" size="100,100">
+</tw-passagedata><tw-passagedata pid="15" name="How did it end???" tags="" position="475,1075" size="100,100">I had a strange, but certain inkling that Arlene would come and find me,(click-replace:&quot;find me,&quot;) [ to confront me.]  I was the one person she could easily talk to. 
+
+I left Arthur and went to the dressing room Arlene and I shared to change out of my stage outfit. I faced the mirror, working on untangling my head piece from my hair, when the door opened, and Arlene walked in. (click-append:&quot;Arlene walked in.&quot;) [
+
+//Hello//, I said, turning to give her a brief smile before facing the mirror once more.] (click-append:&quot;turning to give her a brief smile before facing the mirror once more.&quot;) [ //What are you doing here? I thought everybody left.//] (click-append:&quot;What are you doing here? I thought everybody left.&quot;) [
+
+//We’re all still here. Everybody is getting changed before we leave,// she said, shutting the door behind her and walking further into the room, the gold ruffles of her dress moving with her.] (click-append:&quot;the gold ruffles of her dress moving with her.&quot;) [
+
+//Good// I said, placing my head piece on the dresser.] (click-append:&quot;placing my head piece on the dresser.&quot;) [ //We can leave together.//] (click-append:&quot;We can leave together.&quot;) [
+
+I could see Arlene observing me, as if she wanted me to admit it first before she mentioned anything. But I wasn’t going to be the one to bring it up. As far as she knew, I was //pressured// by Arthur.] (click-append:&quot;I was pressured by Arthur.&quot;) [
+
+//Do you have something to say to me?// I said, turning to look at her, giving her a smile that was all teeth.] (click-append:&quot;giving her a smile that was all teeth.&quot;) [
+
+//You know what Arthur did, don&#39;t you?// she said.] (click-append:&quot;You know what Arthur did, don&#39;t you? she said.&quot;) [
+
+//Did what?//] (click-append:&quot;Did what?&quot;) [
+
+//Don’t be obtuse, Estelle. I saw you there with him.//] (click-append:&quot;Don’t be obtuse, Estelle. I saw you there with him.&quot;) [
+
+I frowned, crossing my arms against my chest, //I’m confused, Arlene. You saw me where?//] (click-append:&quot;I’m confused, Arlene. You saw me where?&quot;) [
+
+//I saw what you did to James!// Arlene said, her voice reaching a higher pitch.] (click-append:&quot;her voice reaching a higher pitch.&quot;) [ //I saw what he did!//] (click-append:&quot;I saw what he did!&quot;) [
+
+//Oh,// I laughed and relaxed against the dresser.] (click-append:&quot;I laughed and relaxed against the dresser.&quot;) [ //That.//] (click-append:&quot;That.&quot;) [
+
+//You’re laughing?// she scoffed, nearing me.] (click-append:&quot;she scoffed, nearing me.&quot;) [ //Have you gone insane?//] (click-append:&quot;Have you gone insane?&quot;) [
+
+//You’re the one acting hysterical.//] (click-append:&quot;You’re the one acting hysterical.&quot;) [
+
+//Because you killed him!//] (click-append:&quot;Because you killed him!&quot;) [
+
+//Oh no,// I shook my head.] (click-append:&quot;I shook my head.&quot;) [ //I didn’t do any killing. Don’t put this on me.//] (click-append:&quot;I didn’t do any killing. Don’t put this on me.&quot;) [
+
+Arlene took a colossal step back from me, as if I had slapped her across the face. She stared at me, mouth agape and eyes wide. 
+
+She kept shaking her head, retreating backwards slowly,] (click-append:&quot;retreating backwards slowly,&quot;) [//What is //wrong// with you?//] (click-append:&quot;What is wrong with you?&quot;) [
+
+I shrugged and turned back to the mirror, looking at my reflection and fixing a lipstick smudge,] (click-append:&quot;looking at my reflection and fixing a lipstick smudge,&quot;) [ //nothing.//] (click-append:&quot;nothing.&quot;) [
+
+I could hear Arlene crying and I looked at her through the mirror to see her clutching her chest. I tried to console her, but she wouldn’t let me.] (click-append:&quot;but she wouldn’t let me.&quot;) [
+
+//Don’t touch me!// Arlene screamed and scrambled away from me, nearing the dressing room door.] (click-append:&quot;nearing the dressing room door.&quot;) [
+
+//Arlene, listen to me. James didn’t love you.//] (click-append:&quot;Arlene, listen to me. James didn’t love you.&quot;) [
+
+//Yes, he did!//] (click-append:&quot;Yes, he did!&quot;) [
+
+//No,// I insisted.] (click-append:&quot;No, I insisted.&quot;) [ //He didn’t. He was using you to get information so him and the higher ups can raid the speakeasy and arrest everybody in it. Did you really want that to happen?//] (click-append:&quot;He didn’t. He was using you to get information so him and the higher ups can raid the speakeasy and arrest everybody in it. Did you really want that to happen?&quot;)[
+
+She stayed quiet, so I went on,] (click-append:&quot;She stayed quiet, so I went on,&quot;) [ //we did what we had to do to save ourselves. To save you.//] (click-append:&quot;we did what we had to do to save ourselves. To save you.&quot;) [
+
+//You’re lying,// Arlene muttered, her chest moving up and down in rapid breaths.] (click-append:&quot;her chest moving up and down in rapid breaths.&quot;) [ [[For once in your life, stop lying.]]] </tw-passagedata><tw-passagedata pid="16" name="News paper clipping" tags="background3" position="1000,1075" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="turn the hardcover page" tags="background1" position="600,175" size="100,100">
 
 
 
@@ -521,6 +588,37 @@ I was in such agony to escape, and I felt my existence was tainted in some subtl
     (replace: &quot;fear&quot;)[(text-colour: white)[&quot;fear&quot;]]
     but my own hand
 ]
+
+
+
+(live: 2s)[
+(show: ?sentence1)
+(stop:)
+]
+
+(live: 5s)[
+(hide: ?sentence1)
+(stop:)
+]
+
+(live: 6s)[
+(show: ?sentence2)
+(stop:)
+]
+
+(live: 9s)[
+(hide: ?sentence2)
+(stop:)
+]
+
+(live: 10s)[
+(show: ?sentence3)
+(stop:)
+]
+
+|sentence1)[Your first sentence here.]
+|sentence2)[Your second sentence here.]
+|sentence3)[Your third sentence here.]
 </tw-passagedata><tw-passagedata pid="20" name="Flip the page" tags="background10" position="1200,600" size="100,100">I didn&#39;t think I would be admitting this, but there is no better place to keep this hidden other than the pages of my journal. (click-append:&quot;journal.&quot;) [
 
 I am not seeing Arlene&#39;s point in how Arthur is an awful person.
@@ -580,6 +678,29 @@ My arms were around his waist before he could finish his sentence.]
 (align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="21" name="Rise to fame" tags="" position="850,825" size="100,100">camera flashes 
 
 (print: &quot;&lt;div class=&#39;flash-overlay&#39;&gt;&lt;/div&gt;&quot;)
+
+
+</tw-passagedata><tw-passagedata pid="22" name="For once in your life, stop lying." tags="" position="600,1200" size="100,100">(print: &quot;&lt;span class=&#39;fade-text fade-delay-1&#39;&gt;Arlene never came out of that dressing room, never went past the secret door of the speakeasy.&lt;/span&gt;&quot;)
+(print: &quot;&lt;span class=&#39;fade-text fade-delay-2&#39;&gt;Genevieve was the one to find her.&lt;/span&gt;&quot;)
+(print: &quot;&lt;span class=&#39;fade-text fade-delay-3&#39;&gt;She went looking for us because we had taken too long.&lt;/span&gt;&quot;)
+
+
+
+
+
+
+
+
+
+Arthur walked inside, and knelt beside me, looking down at his unmoving step-sister. 
+
+We shared a brief glance. He checked for a pulse, but he didn’t have to. 
+
+Kneeling beside your bleeding body, clutching your hand that was painted with my tear drops.
+
+Arthur unbuttoned his suit jacket and draped it around my shoulders. I pulled it tight against my body.
+
+And hoped no one else saw the blood spatter on my dress. 
 
 
 </tw-passagedata></tw-storydata>
