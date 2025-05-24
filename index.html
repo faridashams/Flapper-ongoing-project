@@ -216,12 +216,23 @@ body {
 
 
 
-
-
 /* Add this to your Story Stylesheet */
 tw-hook {
   transition: opacity 3s cubic-bezier(0.4, 0.0, 0.2, 1);
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
+}
+
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+  display: inline-block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
  *  Desc: Resize HTML imageMap to scaled image.
  *  Copyright: (c) 2019 David J. Bradshaw - dave@bradshaw.net
  *  License: MIT
@@ -495,7 +506,13 @@ Arthur didn’t respond for a few beats.
 	I was thinking many different thoughts. Perhaps you’ll get scared and stay silent, perhaps you’ll forget what happened and move on. You hadn’t known James for that long, surly his death wasn’t that big of a heartbreak. 
 But I misjudged how fast you fell in love with him.   
 You knowing what happened was a huge risk I wasn’t willing to take, neither was Arthur. We were at a good point in our career, and I wasn’t about to lose it all.  
-I looked at Arthur, only one solution coming to mind to make sure you’d stay quiet, and what he found in my gaze had him grinning, but not the soft welcoming grin that would put you at ease, it was the kind of cold calculating grin, the slow curve of his lips that only shows when he’s about to turn over a winning card.</tw-passagedata><tw-passagedata pid="12" name="Our last show" tags="" position="700,800" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Realisations" tags="" position="325,1025" size="100,100">I remember the sound of my heartbeat being loud in my ears, my pearl sautoir necklace dangled in the air in front of me. Your hand was in mine, clutching it to the point I felt my circulation cut short. 
+I looked at Arthur, only one solution coming to mind to make sure you’d stay quiet, and what he found in my gaze had him grinning, but not the soft welcoming grin that would put you at ease, it was the kind of cold calculating grin, the slow curve of his lips that only shows when he’s about to turn over a winning card.</tw-passagedata><tw-passagedata pid="12" name="Our last show" tags="" position="700,800" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Realisations" tags="" position="325,1025" size="100,100">(print: &quot;&lt;span class=&#39;fade-in&#39;&gt;The sound of my heartbeat was loud in my ears, my pearl sautoir necklace dangled in the air in front of me. &lt;/span&gt;&quot;)
+
+
+
+
+
+Your hand was in mine, clutching it to the point I felt my circulation cut short. 
 The muffled sound of rain and the roar of the crowd as we stood from our bow inflicted a dull ache in my temple. You grasped my hand in guidance, Arthur’s presence looming over both of us. I turned toward you, a frightened look on your face. 
 Arthur was leaning on the bar, resting his full weight on his elbow, nursing an Old Fashioned. His posture was of someone that exuded nonchalant confidence, the straight back, the high raised chin. Arthur, who perched on the balls of his feet so that he can make quick exits in uncomfortable situations. 
 
@@ -589,36 +606,43 @@ I was in such agony to escape, and I felt my existence was tainted in some subtl
     but my own hand
 ]
 
-
+|sentence1)[Your first sentence here.]
+|sentence2)[Your second sentence here.]
+|sentence3)[Your third sentence here.]
 
 (live: 2s)[
-(show: ?sentence1)
-(stop:)
-]
-
-(live: 5s)[
-(hide: ?sentence1)
+(transition: &quot;dissolve&quot;)[(show: ?sentence1)]
 (stop:)
 ]
 
 (live: 6s)[
-(show: ?sentence2)
-(stop:)
-]
-
-(live: 9s)[
-(hide: ?sentence2)
+(transition: &quot;dissolve&quot;)[(hide: ?sentence1)]
+(transition: &quot;dissolve&quot;)[(show: ?sentence2)]
 (stop:)
 ]
 
 (live: 10s)[
-(show: ?sentence3)
+(transition: &quot;dissolve&quot;)[(hide: ?sentence2)]
+(transition: &quot;dissolve&quot;)[(show: ?sentence3)]
 (stop:)
 ]
 
-|sentence1)[Your first sentence here.]
-|sentence2)[Your second sentence here.]
-|sentence3)[Your third sentence here.]
+Arlene never came out of that dressing room, never went past the secret door of the speakeasy.
+
+Genevieve was the one to find her.
+
+She went looking for us because we had taken too long.
+
+Arthur walked inside, and knelt beside me, looking down at his unmoving step-sister. 
+
+We shared a brief glance. He checked for a pulse, but he didn’t have to. 
+
+Kneeling beside your bleeding body, clutching your hand that was painted with my tear drops.
+
+Arthur unbuttoned his suit jacket and draped it around my shoulders. I pulled it tight against my body.
+
+And hoped no one else saw the blood spatter on my dress. 
+
 </tw-passagedata><tw-passagedata pid="20" name="Flip the page" tags="background10" position="1200,600" size="100,100">I didn&#39;t think I would be admitting this, but there is no better place to keep this hidden other than the pages of my journal. (click-append:&quot;journal.&quot;) [
 
 I am not seeing Arlene&#39;s point in how Arthur is an awful person.
@@ -680,27 +704,71 @@ My arms were around his waist before he could finish his sentence.]
 (print: &quot;&lt;div class=&#39;flash-overlay&#39;&gt;&lt;/div&gt;&quot;)
 
 
-</tw-passagedata><tw-passagedata pid="22" name="For once in your life, stop lying." tags="" position="600,1200" size="100,100">(print: &quot;&lt;span class=&#39;fade-text fade-delay-1&#39;&gt;Arlene never came out of that dressing room, never went past the secret door of the speakeasy.&lt;/span&gt;&quot;)
-(print: &quot;&lt;span class=&#39;fade-text fade-delay-2&#39;&gt;Genevieve was the one to find her.&lt;/span&gt;&quot;)
-(print: &quot;&lt;span class=&#39;fade-text fade-delay-3&#39;&gt;She went looking for us because we had taken too long.&lt;/span&gt;&quot;)
+</tw-passagedata><tw-passagedata pid="22" name="For once in your life, stop lying." tags="" position="600,1200" size="100,100">(align:&quot;&lt;==&gt;&quot;)+(box:&quot;=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=========&quot;)[|sentence1)[Arlene never came out of that dressing room, never went past the secret door of the speakeasy.]
+]
 
+(align:&quot;==&gt;&quot;)+(box:&quot;===========================XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX===&quot;)[|sentence2)[Genevieve was the one to find her.]]
 
+(align:&quot;&lt;==&gt;&quot;)+(box:&quot;======XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=========&quot;)[|sentence3)[She went looking for us because we had taken too long.]]
 
+(align:&quot;&lt;==&quot;)+(box:&quot;===========================XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX===&quot;)[|sentence4)[Arthur walked inside, and knelt beside me, looking down at his unmoving step-sister.]]
 
+(align:&quot;&lt;==&gt;&quot;)+(box:&quot;======XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=========&quot;)[|sentence5)[We shared a brief glance. He checked for a pulse, but he didn’t have to.]]
 
+(align:&quot;&lt;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[|sentence6)[Kneeling beside her bleeding body, clutching her hand that was painted with my tear drops.]]
 
+(align:&quot;&lt;==&gt;&quot;)+(box:&quot;===XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX============&quot;)[|sentence7)[Arthur unbuttoned his suit jacket and draped it around my shoulders. I pulled it tight against my body.]]
 
+(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;=========XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX======&quot;)[|sentence8)[And hoped no one else saw the blood spatter on my dress.]]
 
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[News paper clipping]]
 
-Arthur walked inside, and knelt beside me, looking down at his unmoving step-sister. 
+(live: 2s)[
+(transition: &quot;dissolve&quot;)[(show: ?sentence1)]
+(stop:)
+]
 
-We shared a brief glance. He checked for a pulse, but he didn’t have to. 
+(live: 6s)[
+(transition: &quot;dissolve&quot;)[(hide: ?sentence1)]
+(transition: &quot;dissolve&quot;)[(show: ?sentence2)]
+(stop:)
+]
 
-Kneeling beside your bleeding body, clutching your hand that was painted with my tear drops.
+(live: 10s)[
+(transition: &quot;dissolve&quot;)[(hide: ?sentence2)]
+(transition: &quot;dissolve&quot;)[(show: ?sentence3)]
+(stop:)
+]
 
-Arthur unbuttoned his suit jacket and draped it around my shoulders. I pulled it tight against my body.
+(live: 14s)[
+(transition: &quot;dissolve&quot;)[(hide: ?sentence3)]
+(transition: &quot;dissolve&quot;)[(show: ?sentence4)]
+(stop:)
+]
 
-And hoped no one else saw the blood spatter on my dress. 
+(live: 18s)[
+(transition: &quot;dissolve&quot;)[(hide: ?sentence4)]
+(transition: &quot;dissolve&quot;)[(show: ?sentence5)]
+(stop:)
+]
+
+(live: 22s)[
+(transition: &quot;dissolve&quot;)[(hide: ?sentence5)]
+(transition: &quot;dissolve&quot;)[(show: ?sentence6)]
+(stop:)
+]
+
+(live: 26s)[
+(transition: &quot;dissolve&quot;)[(hide: ?sentence6)]
+(transition: &quot;dissolve&quot;)[(show: ?sentence7)]
+(stop:)
+]
+
+(live: 30s)[
+(transition: &quot;dissolve&quot;)[(hide: ?sentence7)]
+(transition: &quot;dissolve&quot;)[(show: ?sentence8)]
+(stop:)
+]
 
 
 </tw-passagedata></tw-storydata>
