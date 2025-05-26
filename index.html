@@ -222,17 +222,31 @@ tw-hook {
 }
 
 
-.fade-in {
+.fade-in-out {
   opacity: 0;
-  animation: fadeIn 2s ease forwards;
-  display: inline-block;
+  animation: fadeInOut 4s ease-in-out forwards;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes fadeInOut {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
+
+
+
+
+/* Add this to your Story Stylesheet for magical cursor effect */
+#typewriter::after {
+  content: "|";
+  animation: blink 1s infinite;
+  color: gold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
  *  Desc: Resize HTML imageMap to scaled image.
  *  Copyright: (c) 2019 David J. Bradshaw - dave@bradshaw.net
  *  License: MIT
@@ -506,25 +520,64 @@ Arthur didn’t respond for a few beats.
 	I was thinking many different thoughts. Perhaps you’ll get scared and stay silent, perhaps you’ll forget what happened and move on. You hadn’t known James for that long, surly his death wasn’t that big of a heartbreak. 
 But I misjudged how fast you fell in love with him.   
 You knowing what happened was a huge risk I wasn’t willing to take, neither was Arthur. We were at a good point in our career, and I wasn’t about to lose it all.  
-I looked at Arthur, only one solution coming to mind to make sure you’d stay quiet, and what he found in my gaze had him grinning, but not the soft welcoming grin that would put you at ease, it was the kind of cold calculating grin, the slow curve of his lips that only shows when he’s about to turn over a winning card.</tw-passagedata><tw-passagedata pid="12" name="Our last show" tags="" position="700,800" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Realisations" tags="" position="325,1025" size="100,100">(print: &quot;&lt;span class=&#39;fade-in&#39;&gt;The sound of my heartbeat was loud in my ears, my pearl sautoir necklace dangled in the air in front of me. &lt;/span&gt;&quot;)
+I looked at Arthur, only one solution coming to mind to make sure you’d stay quiet, and what he found in my gaze had him grinning, but not the soft welcoming grin that would put you at ease, it was the kind of cold calculating grin, the slow curve of his lips that only shows when he’s about to turn over a winning card.</tw-passagedata><tw-passagedata pid="12" name="Our last show" tags="" position="700,800" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Realisations" tags="" position="325,1025" size="100,100">(t8n-delay: 2s) + (t8n: &quot;fade&quot;) [The sound of my heartbeat was loud in my ears, my pearl sautoir necklace dangled in the air in front of me.]
+
+(t8n-delay: 4s) + (t8n: &quot;fade-down&quot;) [Arlene&#39;s hand was in mine, clutching it to the point I felt my circulation cut short.]
+
+(t8n-delay: 8s) + (t8n: &quot;fade-down&quot;) [The muffled sound of rain and the roar of the crowd as we stood from our bow inflicted a dull ache in my temple. She grasped my hand in guidance.] 
+
+(t8n-delay: 14s) + (t8n: &quot;fade-down&quot;) [I turned toward Arlene, her brows were hunched in together, creating a crease, and her lips were downturned in a frown. She was looking over at one spot only.] 
+
+(t8n-delay: 18s) + (t8n: &quot;fade-down&quot;) [Arthur was leaning on the bar, resting his full weight on his elbow, nursing an Old Fashioned. His posture was of someone that exuded nonchalant confidence, the straight back, the high raised chin. Arthur, who perched on the balls of his feet so that he can make quick exits in uncomfortable situations.]
+
+(t8n-delay: 24s) + (t8n: &quot;fade-down&quot;) [His presence felt bigger than the entire room.]
+
+(t8n-delay: 28s) + (t8n: &quot;fade-down&quot;) [Moments replayed in my head in that moments: how Arlene was physically there, but mentally absent. Every time I started a conversation with her, she would nod or hum when it was appropriate, focused on Arthur in the crowds with a certain look I couldn&#39;t pinpoint. At times when he was distracted hiding from undercover officials in the speakeasy, Arlene would detach herself from the conversation and walk off without saying a word to me.]
+
+(t8n-delay: 34s) + (t8n: &quot;fade-down&quot;) [~~I couldn&#39;t figure out what in the world was wrong with her.~~]
+
+(t8n-delay: 32s ) + (t8n: &quot;fade-down&quot;) [Arthur raised his glass up high in Arlene&#39;s direction, a cold smile playing on his lips.]
 
 
-
-
-
-Your hand was in mine, clutching it to the point I felt my circulation cut short. 
-The muffled sound of rain and the roar of the crowd as we stood from our bow inflicted a dull ache in my temple. You grasped my hand in guidance, Arthur’s presence looming over both of us. I turned toward you, a frightened look on your face. 
-Arthur was leaning on the bar, resting his full weight on his elbow, nursing an Old Fashioned. His posture was of someone that exuded nonchalant confidence, the straight back, the high raised chin. Arthur, who perched on the balls of his feet so that he can make quick exits in uncomfortable situations. 
-
-And you, you were physically there, but mentally absent. Every time I started a conversation with you, you would nod or hum along, focused on Arthur in the crowds with a haunted look in your eyes, or if he was distracted hiding from undercover officials, you would detach yourself from the conversation and walk off without saying anything to me. 
+ 
 	It turned out you had found out what we had done, or more precisely you were there when it happened, we just did not see you.  
 	Arthur learned that the boy, James, was one of the people working undercover to bring down the speakeasy from the inside out. He was telling people who didn’t have any business being inside the speakeasy’s code, which was privy to well trusted individuals and the various performers. 
 To be honest, I didn’t expect you to have fallen for James’ advances. He was seeking you out after shows, buying you drinks, flowers, elaborate gifts. But what you didn’t realise was that he was using you to get information on us; the biggest jazz band of the roaring twenties. We were everywhere. I suppose he didn’t approve of the ways we became famous.
 
-Now when I think about the night of your death, it makes sense why you were clutching my hand as if your life depended on it, and staring at Arthur in horror. You thought I would be able to save you from him. Because you saw the good in people, in me, you thought I wasn’t involved with James’ death, that I was merely there because Arthur coerced me, blackmailed me. And I suppose you were right to doubt my involvement, because why would your best friend have a hand in your lover’s death?</tw-passagedata><tw-passagedata pid="14" name="Fatal flaw" tags="" position="600,925" size="100,100">Myself and Arthur had exploited low paid officers to keep the speakeasy a secret, though from what I knew, other speakeasies were doing the same, so I never understood why it was such a problem when we did it. All I have ever wanted was for us to succeed. I wanted us to be the highlight of every conversation. I wanted the speakeasy to be full to the brim of people who were there just to see us perform. And keeping the speakeasy hidden, and occasionally pointing fingers at competition and whispering in officials’ ears was the only way we were going to reach that. You can hardly blame me, right?   
-James was clever, I’ll give him that, but he wasn’t clever enough. Arthur slowly befriended James, and nobody could go up against Arthur’s charm and walk away unscathed. Arthur, James and I would sit around tables with candles flickering in glass holders, clinking flutes of champagne and laughing as if we were old friends. We fabricated a lie about how we wanted to close this specific speakeasy since the owner was mistreating us and was not paying us what we deserved. It makes me laugh now how easy it was for James to trust and believe us. How can someone like him ever be an undercover? It was absurd, but it worked in our favour.
- Arthur had asked James to meet us at an alleyway far from the secret door that let down to the speakeasy to finalise our plan of ‘raiding the speakeasy’ with his Official friends. Arthur did not hesitate to drive that knife in his gut, and I stood watching, guilt gnawing at my stomach, but I did nothing to stop him.
-</tw-passagedata><tw-passagedata pid="15" name="How did it end???" tags="" position="475,1075" size="100,100">I had a strange, but certain inkling that Arlene would come and find me,(click-replace:&quot;find me,&quot;) [ to confront me.]  I was the one person she could easily talk to. 
+Now when I think about the night of your death, it makes sense why you were clutching my hand as if your life depended on it, and staring at Arthur in horror. You thought I would be able to save you from him. Because you saw the good in people, in me, you thought I wasn’t involved with James’ death, that I was merely there because Arthur coerced me, blackmailed me. And I suppose you were right to doubt my involvement, because why would your best friend have a hand in your lover’s death?</tw-passagedata><tw-passagedata pid="14" name="Fatal flaw" tags="" position="600,925" size="100,100">(live: 0.05s)[
+(set: $text to &quot;Myself and Arthur exploited low paid officers to keep the speakeasy a secret, though from what I knew, other speakeasies were doing the same, so I never understood why it was such a problem when we did it.
+
+All I have ever wanted was for us to succeed. I wanted us to be the highlight of every conversation. I wanted the speakeasy to be full to the brim of people who were there just to see us perform. And keeping the speakeasy hidden, and occasionally pointing fingers at competition and whispering in officials&#39; ears was the only way we were going to reach that. No one can hardly blame me, right? 
+
+James was clever, I&#39;ll give him that, but he wasn&#39;t clever enough. Arthur slowly befriended James, and nobody could go up against Arthur&#39;s charm and walk away unscathed. Arthur, James and I would sit around tables with candles flickering in glass holders, clinking flutes of champagne and laughing as if we were old friends. We fabricated a lie about how we wanted to close this specific speakeasy since the owner was mistreating us and was not paying us what we deserved.
+
+It makes me laugh how easy it was for James to trust and believe us. How can someone like him ever be an undercover? It was absurd, but it worked in our favour. Arthur asked James to meet us at an alleyway far from the secret door that led down to the speakeasy to finalise our plan of &#39;raiding the speakeasy&#39; with his Official friends. 
+
+Arthur did not hesitate to drive that knife in James&#39; gut, and I stood watching, guilt gnawing at my stomach, but I did nothing to stop him.&quot;)
+(set: $index to it + 1)
+(if: $index &lt;= $text&#39;s length)[
+(replace: ?typewriter)[(substring: $text, 1, $index)]
+](else:)[
+(stop:)
+]
+]
+
+(live: 2.5s)[
+(set: $fadeIndex to $text&#39;s length)
+(stop:)
+]
+
+(live: 2.55s)[
+(set: $fadeIndex to it - 3)
+(if: $fadeIndex &gt;= 0)[
+(replace: ?typewriter)[(substring: $text, 1, $fadeIndex)]
+](else:)[
+(replace: ?typewriter)[]
+(stop:)
+]
+]
+
+|typewriter&gt;[]</tw-passagedata><tw-passagedata pid="15" name="How did it end???" tags="" position="475,1075" size="100,100">I had a strange, but certain inkling that Arlene would come and find me,(click-replace:&quot;find me,&quot;) [ to confront me.]  I was the one person she could easily talk to. 
 
 I left Arthur and went to the dressing room Arlene and I shared to change out of my stage outfit. I faced the mirror, working on untangling my head piece from my hair, when the door opened, and Arlene walked in. (click-append:&quot;Arlene walked in.&quot;) [
 
@@ -606,26 +659,35 @@ I was in such agony to escape, and I felt my existence was tainted in some subtl
     but my own hand
 ]
 
-|sentence1)[Your first sentence here.]
-|sentence2)[Your second sentence here.]
-|sentence3)[Your third sentence here.]
 
-(live: 2s)[
-(transition: &quot;dissolve&quot;)[(show: ?sentence1)]
+
+(live: 0.05s)[
+(set: $text to &quot;Your magical sentence appears here as if written by an invisible pen.&quot;)
+(set: $index to it + 1)
+(if: $index &lt;= $text&#39;s length)[
+(replace: ?typewriter)[(substring: $text, 1, $index)]
+](else:)[
+(stop:)
+]
+]
+
+(live: 2.5s)[
+(set: $fadeIndex to $text&#39;s length)
 (stop:)
 ]
 
-(live: 6s)[
-(transition: &quot;dissolve&quot;)[(hide: ?sentence1)]
-(transition: &quot;dissolve&quot;)[(show: ?sentence2)]
+(live: 2.55s)[
+(set: $fadeIndex to it - 3)
+(if: $fadeIndex &gt;= 0)[
+(replace: ?typewriter)[(substring: $text, 1, $fadeIndex)]
+](else:)[
+(replace: ?typewriter)[]
 (stop:)
+]
 ]
 
-(live: 10s)[
-(transition: &quot;dissolve&quot;)[(hide: ?sentence2)]
-(transition: &quot;dissolve&quot;)[(show: ?sentence3)]
-(stop:)
-]
+|typewriter&gt;[]
+
 
 Arlene never came out of that dressing room, never went past the secret door of the speakeasy.
 
