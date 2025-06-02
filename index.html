@@ -154,6 +154,11 @@ tw-story[tags~="background7"] {
   background: url('images/arthur.jpg') center center / cover no-repeat fixed;
 }
 
+tw-story[tags~="background8"] {
+  background: url('images/dressingroom.jpg') center center / cover no-repeat fixed;
+}
+
+
 /*
 body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('images/arlene.jpg');
@@ -262,42 +267,7 @@ tw-hook {
 
 // Harlowe Macro Framework, by Chapel; version 1.0.2
 ;!function(){"use strict";var r={major:1,minor:0,patch:2},e=[r.major,r.minor,r.patch].join(".");r.semantic=e,r=Object.freeze(r);var t=$("tw-storydata"),a=Object.freeze({name:t.attr("name"),ifid:t.attr("ifid")}),n=t.attr("format-version"),o=n.split("."),i=Object.freeze({major:o[0],minor:o[1],patch:o[2],semantic:n});window.Harlowe=window.Harlowe||{},window.Harlowe=Object.assign(window.Harlowe,{framework:r,API_ACCESS:Object.freeze({MACROS:require("macros"),STATE:require("state"),CHANGER:require("datatypes/changercommand"),ENGINE:require("engine")}),engine:i,story:a})}(),function(){"use strict";function e(r){return"number"==typeof r||"boolean"==typeof r||"string"==typeof r||null===r||Array.isArray(r)&&r.every(e)||r instanceof Set&&Array.from(r).every(e)||r instanceof Map&&Array.from(r.values()).every(e)||_changer.isPrototypeOf(r)}window.Harlowe=Object.assign(window.Harlowe,{helpers:{isSerialisable:e,isSerializable:e,arrayify:function(r,e){if(r){var t=[].slice.call(r);return void 0!==e&&(t=t.slice(e)),t}},getPassageData:function(r){var e=$('tw-passagedata[name="'+r+'"]');if(e[0])return e}}})}(),function(){"use strict";var n=window.localStorage||!1,o=Harlowe.story.ifid+"-tw-storage";function r(){try{if(!n)throw new Error("storage is inaccessible");n.setItem(o,JSON.stringify({ifid:Harlowe.story.ifid}))}catch(r){console.warn(r)}}function i(r){try{var e;if(n)return e=JSON.parse(n.getItem(o)),r&&r&&"string"==typeof r?e[r]:e;throw new Error("storage is inaccessible")}catch(r){console.warn(r)}}null==i()&&r(),Harlowe.storage={clear:r,save:function(r,e){try{if(!r||"string"!=typeof r)throw new TypeError("cannot store values without a valid storage key");if(void 0===e)throw new TypeError("cannot store undefined values");var t={};if(t[r]=e,!n)throw new Error("storage is inaccessible");var a=i();Object.assign(a,t),n.setItem(o,JSON.stringify(a))}catch(r){console.warn(r)}},load:i,remove:function(r){try{if(!r||"string"!=typeof r)throw new TypeError("cannot store values without a valid storage key");if(!n)throw new Error("storage is inaccessible");var e=i();e.hasOwnProperty(r)&&(delete e[r],n.setItem(o,JSON.stringify(e)))}catch(r){console.warn(r)}}}}(),function(){"use strict";function a(r,e,t){if(!(this instanceof a))return new a(r,e,t);this.name=r||"unknown",this.args=e||[],this.data=t||{},this.type=t&&t.type||"basic",this.fn=t&&t.fn||"handler","changer"===this.type&&("handler"===this.fn?this.instance=t&&t.instance||null:this.descriptor=t&&t.descriptor||null)}a.create=function(r,e,t){if(!r||"string"!=typeof r||!r.trim())throw new TypeError("Invalid macro name.");return e&&e instanceof Array||(e=[]),t&&"object"==typeof t||(t={type:"basic",fn:"handler"}),new a(r,e,t)},Object.assign(a.prototype,{clone:function(){return a.create(this.name,this.args,this.data)},syntax:function(){return"("+this.name+":)"},error:function(r,e){var t="Error in the "+this.syntax()+" macro: "+r;return e&&alert(t),console.warn("HARLOWE CUSTOM MACRO ERROR -> ",t),new Error(r)},typeCheck:function(r){r&&r instanceof Array||(r=Harlowe.helpers.arrayify(arguments));var n=this,o=[];if(r.forEach(function(r,e){var t=e+1,a=[];"string"==typeof r&&("any"===(a=r.includes("|")?r.split("|").map(function(r){return r.trim().toLowerCase()}):[r.trim().toLowerCase()])[0]||a.some(function(r){return typeof n.args[e]===r})||o.push("argument "+t+" should be a(n) "+a.join(" or ")))}),o.length)return n.error(o.join("; "))}}),window.Harlowe=Object.assign(window.Harlowe,{MacroContext:a})}(),function(){"use strict";var c=Harlowe.API_ACCESS.MACROS,l=Harlowe.API_ACCESS.CHANGER;window.Harlowe=Object.assign(window.Harlowe||{},{macro:function(r,e,t){if(!r||"string"!=typeof r||!r.trim())throw new TypeError("Invalid macro name.");if(!e||"function"!=typeof e)throw new TypeError("Invalid macro handler.");var a,n,o,i,s;t&&"function"==typeof t?(o=r,i=e,s=t,c.addChanger(o,function(){var r=Harlowe.helpers.arrayify(arguments,1),e=l.create(o,r),t=Harlowe.MacroContext.create(o,r,{type:"changer",fn:"handler",instance:e});return i.apply(t,r),e},function(){var r=Harlowe.helpers.arrayify(arguments),e=r.shift(),t=Harlowe.MacroContext.create(o,r,{type:"changer",fn:"changer",descriptor:e});s.apply(t,r)},c.TypeSignature.zeroOrMore(c.TypeSignature.Any))):(a=r,n=e,c.add(a,function(){var r=Harlowe.helpers.arrayify(arguments,1),e=Harlowe.MacroContext.create(a,r,{type:"basic",fn:"handler"}),t=n.apply(e,r);return null==t?"":t},c.TypeSignature.zeroOrMore(c.TypeSignature.Any)))}})}(),function(){"use strict";var t=Harlowe.API_ACCESS.STATE,e=Harlowe.API_ACCESS.ENGINE;function a(){return t.passage}window.Harlowe=Object.assign(window.Harlowe||{},{passage:a,tags:function(r){r=r||a();try{var e=Harlowe.helpers.getPassageData(r).attr("tags");return e?e.split(" "):[]}catch(r){return console.warn(r.message),[]}},goto:function(r){return e.goToPassage(r)},variable:function(r,e){if("$"!==r[0])throw new Error('cannot access variable "'+r+'"');if(r=r.substr(1),void 0!==e){if(!Harlowe.helpers.isSerialisable(e))throw new Error('The value passed to variable "'+r+'" cannot be serialized.');t.variables[r]=e}return t.variables[r]},visited:function(r){return t.passageNameVisited(r||a())},hasVisited:function(r){return 0<t.passageNameVisited(r||a())},turns:function(){return t.pastLength}})}();
-// end Harlowe Macro Framework</script><tw-tag name="firstpage" color="purple"></tw-tag><tw-tag name="background1" color="green"></tw-tag><tw-tag name="background10" color="purple"></tw-tag><tw-tag name="background12" color="purple"></tw-tag><tw-tag name="background13" color="purple"></tw-tag><tw-tag name="background14" color="purple"></tw-tag><tw-tag name="background15" color="purple"></tw-tag><tw-tag name="background3" color="green"></tw-tag><tw-tag name="background2" color="green"></tw-tag><tw-tag name="background7" color="yellow"></tw-tag><tw-tag name="background5" color="yellow"></tw-tag><tw-tag name="background6" color="yellow"></tw-tag><tw-passagedata pid="1" name="back to entries" tags="background4 imagemap" position="600,300" size="100,100">
-&lt;img src=&quot;./images/entries.jpg&quot; usemap=&quot;#image-map&quot;&gt;
-
-&lt;map name=&quot;image-map&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;Why I left&quot; title=&quot;Why I left&quot; href=&quot;&quot; coords=&quot;957,231,594,151&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;Arlene&quot; title=&quot;Arlene&quot; href=&quot;&quot; coords=&quot;938,237,599,303&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;House of horrors&quot; title=&quot;House of horrors&quot; href=&quot;&quot; coords=&quot;580,309,1062,356&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;Enigma&quot; title=&quot;Enigma&quot; href=&quot;&quot; coords=&quot;604,378,857,449&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;Ensemble&quot; title=&quot;Ensemble&quot; href=&quot;&quot; coords=&quot;599,458,953,529&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;Rise to fame&quot; title=&quot;Rise to fame&quot; href=&quot;&quot; coords=&quot;612,534,972,600&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;Our last show&quot; title=&quot;Our last show&quot; href=&quot;&quot; coords=&quot;599,604,991,665&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;Realisations&quot; title=&quot;Realisations&quot; href=&quot;&quot; coords=&quot;607,670,991,743&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;Course of action&quot; title=&quot;Course of action&quot; href=&quot;&quot; coords=&quot;607,748,1038,817&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;Fatal flaw&quot; title=&quot;Fatal flaw&quot; href=&quot;&quot; coords=&quot;604,822,960,875&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;How did it end???&quot; title=&quot;How did it end???&quot; href=&quot;&quot; coords=&quot;589,885,1136,956&quot; shape=&quot;rect&quot;&gt;
-    &lt;area target=&quot;&quot; alt=&quot;News paper clipping&quot; title=&quot;News paper clipping&quot; href=&quot;&quot; coords=&quot;606,965,1135,1039&quot; shape=&quot;rect&quot;&gt;
-&lt;/map&gt;
-
-
-
-&lt;script&gt;
- $(&#39;area&#39;).on(&#39;click&#39;, function(e){
-   e.preventDefault();
-   Harlowe.goto(this.alt);
- });
-&lt;/script&gt;
-
-&lt;script&gt;
- $(&#39;area&#39;).on(&#39;click&#39;, function(e){
-   e.preventDefault();
-   Harlowe.goto(this.alt);
- });
- $(&#39;map&#39;).imageMapResize();
-&lt;/script&gt;
-
-&lt;div style=&quot;display:none;&quot;
+// end Harlowe Macro Framework</script><tw-tag name="firstpage" color="purple"></tw-tag><tw-tag name="background1" color="green"></tw-tag><tw-tag name="background10" color="purple"></tw-tag><tw-tag name="background12" color="purple"></tw-tag><tw-tag name="background13" color="purple"></tw-tag><tw-tag name="background14" color="purple"></tw-tag><tw-tag name="background15" color="purple"></tw-tag><tw-tag name="background3" color="green"></tw-tag><tw-tag name="background2" color="green"></tw-tag><tw-tag name="background7" color="yellow"></tw-tag><tw-tag name="background5" color="yellow"></tw-tag><tw-tag name="background6" color="yellow"></tw-tag><tw-tag name="needs-picture" color="purple"></tw-tag><tw-tag name="needs-picture-2" color="purple"></tw-tag><tw-tag name="needs-picture-3" color="purple"></tw-tag><tw-tag name="needs-picture-4" color="purple"></tw-tag><tw-tag name="needs-pictures-13" color="purple"></tw-tag><tw-tag name="needs-pictures-14" color="purple"></tw-tag><tw-passagedata pid="1" name="back to entries" tags="background4 imagemap" position="600,300" size="100,100">
 [[Why I left]]
 [[Arlene]]
 [[House of horrors]]
@@ -307,10 +277,9 @@ tw-hook {
 [[Our last show]]
 [[Realisations]]
 [[Course of action]]
-[[Fatal flaw]]
 [[How did it end???]]
 [[News paper clipping]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="Arlene" tags="background2" position="1050,350" size="100,100">Digging in my tattered dress pocket looking for change, I stood next to a black chipped pay station. I hadn&#39;t showered in days, I had nowhere to go, and ~~I am a fool.~~  (click-append: &quot;I was a fool.&quot;) [ Moving to New York is the hardest thing I have had to do.] I was in such agony to escape, and I did. 
+</tw-passagedata><tw-passagedata pid="2" name="Arlene" tags="background2" position="1050,350" size="100,100">Digging in my tattered dress pocket looking for change, I stood next to a black chipped pay station. I hadn&#39;t showered in days, I had nowhere to go, and ~~I am a fool.~~  (click-append: &quot;I was a fool.&quot;) [ Moving to New York is the hardest thing I have had to do.] I was in such agony to escape, and I did. 
 
 Without a plan.
 
@@ -506,21 +475,127 @@ He raised his eyebrows and downed the rest of his drink, scrutinising me from ab
 
 Only after I went back up the stairs, into the bedroom I had claimed to be mine, and nestled under the covers,] (click-append:&quot;, and nestled under the covers,&quot;) [ I realised he never answered my question.]
 
-(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[Flip the page]]</tw-passagedata><tw-passagedata pid="11" name="Course of action" tags="" position="375,800" size="100,100">Arthur told me about the conversation you had with him after you had finally released my hand and ran off stage in his direction. You whispered in his ear, ‘I know what you did.’ 
-‘What do you mean Arlene knows?’ I had asked Arthur after the guests cleared out. The opulent ballroom, intimate and mysterious, only illuminated by candlelight, was vacant. Chairs were scrapped back, some laying on their sides. My Mary Janes peeled off the wooden floor as I strode over to Arthur, remnant liquids stuck to the sole of my shoes. 
-Arthur ran a hand through his dishevelled hair, crushing a piece of broken glass underneath his Oxfords, ‘it means she knows, Estelle.’ 
-‘How would she know? We made sure to make it look like it was a robbery. That James was just at the wrong place at the wrong time.’
-Arthur shook his head, ‘it wasn’t that. She saw it happen.’ He laughed dryly, ‘she has been documenting my every move because she doesn’t trust me. And it just happens the one day she follows after me, is the day I drive a knife into her lover’s gut.’ 
-My only concern at this point was that you were going to go straight to the police, or even worse, the media, and I couldn’t let that happen.
-‘Do you think she’ll tell?’ I asked, tugging at my pearl necklace.
-Arthur didn’t respond for a few beats. 
-‘Arlene’s a coward. She’s terrified of me and has never trusted me a day in her life. Perhaps with the right motivation, she’ll stay quiet.,’ he said. 
-‘Yes, but you didn’t expect her to confront you, did you?’ he shook his head. ‘So how can you be so sure she won’t say anything? She witnessed her lover’s death.’  
-‘To be honest with you, Estelle, I’m unsure. I can’t predict what she will do or say.’ Arthur said.
-	I was thinking many different thoughts. Perhaps you’ll get scared and stay silent, perhaps you’ll forget what happened and move on. You hadn’t known James for that long, surly his death wasn’t that big of a heartbreak. 
-But I misjudged how fast you fell in love with him.   
-You knowing what happened was a huge risk I wasn’t willing to take, neither was Arthur. We were at a good point in our career, and I wasn’t about to lose it all.  
-I looked at Arthur, only one solution coming to mind to make sure you’d stay quiet, and what he found in my gaze had him grinning, but not the soft welcoming grin that would put you at ease, it was the kind of cold calculating grin, the slow curve of his lips that only shows when he’s about to turn over a winning card.</tw-passagedata><tw-passagedata pid="12" name="Our last show" tags="" position="700,800" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Realisations" tags="" position="325,1025" size="100,100">(t8n-delay: 2s) + (t8n: &quot;fade&quot;) [The sound of my heartbeat was loud in my ears, my pearl sautoir necklace dangled in the air in front of me.]
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[Flip the page]]</tw-passagedata><tw-passagedata pid="11" name="Course of action" tags="needs-picture" position="375,800" size="100,100">[|sentence1)[[[I know what you did]]]
+]
+
+|sentence2)[//What do you mean Arlene knows?// I asked Arthur after the guests cleared out. The opulent ballroom, intimate and mysterious, only illuminated by candlelight, was vacant. Chairs were scrapped back, some laying on their sides. My Mary Janes peeled off the wooden floor as I strode over to Arthur, remnant liquids stuck to the sole of my shoes. 
+
+Arthur ran a hand through his dishevelled hair, crushing a piece of broken glass underneath his Oxfords, (click-append: &quot;Oxfords,&quot;) [ //it means she knows, Estelle.//] (click-append:&quot;it means she knows, Estelle.&quot;) [
+
+//How would she know? We made sure to make it look like it was a robbery. That James was just at the wrong place at the wrong time.//] (click-append:&quot;How would she know? We made sure to make it look like it was a robbery. That James was just at the wrong place at the wrong time.&quot;) [
+
+Arthur shook his head, //it wasn&#39;t that. She saw it happen.//] (click-append:&quot;it wasn&#39;t that. She saw it happen.&quot;) [ He laughed dryly, //she has been documenting my every move because she doesn&#39;t trust me. And it just happens the one day she follows after me, is the day I drive a knife into her lover&#39;s gut.//] (click-append:&quot;she has been documenting my every move because she doesn&#39;t trust me. And it just happens the one day she follows after me, is the day I drive a knife into her lover&#39;s gut.&quot;) [
+
+My only concern was if Arlene would dare to go to the police, or even worse, the media, and I couldn&#39;t let that happen.] (click-append:&quot;and I couldn&#39;t let that happen.&quot;) [
+
+//Do you think she&#39;ll tell?// I asked, tugging at my pearl necklace.] (click-append:&quot;Do you think she&#39;ll tell? I asked, tugging at my pearl necklace.&quot;) [
+
+Arthur didn&#39;t respond for a few beats.] (click-append:&quot;Arthur didn&#39;t respond for a few beats.&quot;) [
+
+//Arlene&#39;s a coward. She&#39;s terrified of me and has never trusted me a day in her life. Perhaps with the right motivation, she&#39;ll stay quiet,// he said. ] (click-append:&quot;Arlene&#39;s a coward. She&#39;s terrified of me and has never trusted me a day in her life. Perhaps with the right motivation, she&#39;ll stay quiet, he said.&quot;) [
+
+//Yes, but you didn&#39;t expect her to confront you, did you?// he shook his head. (click-append:&quot;he shook his head.&quot;) [ //So how can you be so sure she won&#39;t say anything? She witnessed her beloved&#39;s death.//] (click-append:&quot;So how can you be so sure she won&#39;t say anything? She witnessed her beloved&#39;s death.&quot;) [
+
+//To be honest with you, Estelle, I&#39;m unsure. I can&#39;t predict what she will do or say anymore than you can,// Arthur said.] (click-append:&quot;To be honest with you, Estelle, I&#39;m unsure. I can&#39;t predict what she will do or say anymore than you can, Arthur said.&quot; ) [
+
+Perhaps Arlene will get scared and stay silent, perhaps she&#39;ll forget what happened and move on. She hadn&#39;t known James for that long, surly his death wasn&#39;t that big of a heartbreak.
+Arlene knowing what happened was a huge risk I wasn&#39;t willing to take, neither was Arthur from how it looked. We were at a good point in our career, and I wasn&#39;t about to lose it all.  
+I looked at Arthur, only one solution coming to mind to make sure she&#39;d stay quiet, and what he found in my gaze had him grinning, but not the soft welcoming grin that would put you at ease, it was the kind of cold calculating grin, the slow curve of his lips that only shows when he&#39;s about to turn over a winning card.]]
+]
+
+(live: 2s)[
+(transition: &quot;dissolve&quot;)[(show: ?sentence1)]
+(stop:)
+]
+
+(live:6s)[
+(transition: &quot;dissolve&quot;)[(hide: ?sentence1)]
+(transition: &quot;dissolve&quot;)[(show: ?sentence2)]
+(stop:)
+]
+</tw-passagedata><tw-passagedata pid="12" name="Our last show" tags="background8" position="700,800" size="100,100">The dressing room was dark and smoky, and it was cramped. We were almost walking on top of each other.
+
+I was facing a cracked mirror, reapplying my red lipstick when Genevieve&#39;s elbow shoved into my arm, smudging the lipstick in places it shouldn&#39;t be smudged.
+
+//Genevieve!// I whined. (click-append:&quot;Genevieve! I whined.&quot;) [ //Look at what you did to my face.//] (click-append:&quot;Look at what you did to my face.&quot;)[ 
+
+//Sorrysorry,// She said hurriedly, moving into my space to fix her curls in the same mirror I was using.] (click-append:&quot;Sorrysorry, She said hurriedly, moving into my space to fix her curls in the same mirror I was using.&quot;) [
+
+//Seriously? Out of all the mirrors in this room?//] (click-append:&quot;Seriously? Out of all the mirrors in this room?&quot;) [
+
+//Arlene&#39;s using the other one, and Edward is too obsessed with looking at his own reflection to let me use his mirror for a moment. Now let me finish pinning my hair.//] (click-append:&quot;Arlene&#39;s using the other one, and Edward is too obsessed with looking at his own reflection to let me use his mirror for a moment. Now let me finish pinning my hair.&quot;) [
+
+Thomas laughed from his place on a velvet maroon couch, lounging back with his legs outstretched in front of him on a glass coffee table, ankles crossed and sipping from a flask,] (click-append:&quot;ankles crossed and sipping from a flask,&quot;) [ //this is the best entertainment I have gotten all night. Please, do keep bickering.//] (click-append:&quot;this is the best entertainment I have gotten all night. Please, do keep bickering.&quot;) [
+
+I chose to ignore him and continue to fix the lipstick smudge on my chin. From the mirror&#39;s reflection, I watch as Julian crossed the room to where Thomas was sitting and kick his legs off the table. He almost slid off the couch.
+
+Edward cackles and claps. Thomas sat upright again and narrowed his eyes at Julian,] (click-append:&quot;Thomas sat upright again and narrowed his eyes at Julian,&quot;) [  //You&#39;re lucky I like you.//] (click-append:&quot;You&#39;re lucky I like you.&quot;) [ 
+
+//Aww,// Genevieve and I cooed.] (click-append:&quot;Aww, Genevieve and I cooed.&quot;) [
+
+//Get up and finish getting ready, Thomas,// Julian said.] (click-append:&quot;Get up and finish getting ready, Thomas, Julian said.&quot;) [
+
+//I am ready,// Thomas said, rolling his eyes.] (click-append:&quot;Get up and finish getting ready, Thomas, Julian said.&quot;) [
+
+//With your hair looking like that?// I said.] (click-append:&quot;With your hair looking like that? I said.&quot;) [
+
+Thomas gasped and touched his hair almost instinctively,] (click-append:&quot;Thomas gasped and touched his hair almost instinctively,&quot;) [  //What&#39;s wrong with my hair? Edward, you never lie to me, man. Does my hair look bad?//] (click-append:&quot;What&#39;s wrong with my hair? Edward, you never lie to me, man. Does my hair look bad?&quot;) [
+
+Edward snickered, //It looked fine, drama queen. They&#39;re just messing with you.//] (click-append:&quot;It looked fine, drama queen. They&#39;re just messing with you.&quot;) [
+
+I didn&#39;t think Thomas&#39; eyes could get narrower than that, but I just grinned at him, my smile all teeth.] (click-append:&quot;my smile all teeth.&quot;) [
+
+//Unbelievable,// he muttered under his breath.] (click-append:&quot;Unbelievable, he muttered under his breath.&quot;) [
+
+//Arlene?// Genevieve said. //Are you almost done?//] (click-append:&quot;Arlene? Genevieve said. Are you almost done?&quot;) [
+
+Arlene didn&#39;t respond and I turn to find her standing next to the door, staring at nothingness. Strange.] (click-append:&quot;Strange.&quot;) [
+
+//Arlene?// I said.] (click-append:&quot;Arlene? I said.&quot;) [
+
+No response.] (click-append:&quot;No response.&quot;) [
+
+//Arlene,// Thomas singsongs and snaps his fingers at her face. She blinks and looks at him, coming out of whatever stupor she was in.] (click-append:&quot;coming out of whatever stupor she was in.&quot;) [
+
+//Hmm?//] (click-append:&quot;Hmm?&quot;) [
+
+//Genevieve asked you if were finished getting ready,// I said.] (click-append:&quot;Genevieve asked you if were finished getting ready, I said.&quot;) [
+
+Arlene stared and stared at me without saying anything. I couldn&#39;t pinpoint what she was thinking in that moment. She seemed all right a few minutes ago.] (click-append:&quot;She seemed all right a few minutes ago.&quot;) [
+
+//Are you okay?// Julian asked.] (click-append:&quot;Are you okay? Julian asked.&quot;) [
+
+//I&#39;m fine,// Arlene said, her gaze still planted on me, unmoving. I was starting to feel a little unnerved.] (click-append:&quot;I&#39;m fine, Arlene said, her gaze still planted on me, unmoving. I was starting to feel a little unnerved.&quot;) [
+
+//Do you have something to say?// I asked.] (click-append:&quot;Do you have something to say? I asked.&quot;) [
+
+//No,// Arlene crossed her arms over her chest. //No, I don&#39;t. Unless you have anything to say?//] (click-append:&quot;No, Arlene crossed her arms over her chest. No, I don&#39;t. Unless you have anything to say?&quot;) [
+
+//I don&#39;t have anything to say. What makes you think that?//] (click-append:&quot;I don&#39;t have anything to say. What makes you think that?&quot;) [
+
+//Okay,// Thomas gets up with a sharp clap of his hands, interrupting what Arlene was about to say.] (click-append:&quot;interrupting what Arlene was about to say.&quot;) [  //We&#39;ll get back to whatever the hell that was later, but curtain is in two, so we gather around everyone.//] (click-append:&quot;We&#39;ll get back to whatever the hell that was later, but curtain is in two, so we gather around everyone.&quot;) [
+
+We all shuffle into the middle of the room, and we lean in to make a circle, arms around one another. 
+
+Me, Thomas, Arlene, Edward, Julian, and Genevieve.] (click-append:&quot;Me, Thomas, Arlene, Edward, Julian, and Genevieve.&quot;) [
+
+//Do you want to do the honours, Estelle?// Edward says.] (click-append:&quot;Do you want to do the honours, Estelle? Edward says.&quot;) [
+
+I give him a nod and look at my troupe. My friends I didn&#39;t think I&#39;d ever have.] (click-append:&quot;My friends I didn&#39;t think I&#39;d ever have.&quot;) [
+
+//You five are my favourite people in the world. It is an honour and a privilege to be doing what I love everyday with you by my side—//] (click-append:&quot;You five are my favourite people in the world. It is an honour and a privilege to be doing what I love everyday with you by my side—&quot;) [
+
+//—Julian, are you crying—//] (click-append:&quot;—Julian, are you crying—&quot;) [
+
+//—Shut the hell up—//] (click-append:&quot;—Shut the hell up—&quot;) [
+
+//—I wouldn&#39;t have it any other way. You all are it for me. So, let&#39;s get out there and put on our best performance yet! Don&#39;t forget to smile, even if your feet ache, or in Thomas&#39; case, if your hair is in the way—//] (click-append:&quot;—I wouldn&#39;t have it any other way. You all are it for me. So, let&#39;s get out there and put on our best performance yet! Don&#39;t forget to smile, even if your feet ache, or in Thomas&#39; case, if your hair is in the way—&quot;) [
+
+//—Hey!//] (click-append:&quot;—Hey!&quot;) [
+
+We all laughed and cheered, except Arlene, who was looking down at her shoes. I would need to speak to her after the show to find out what really is wrong with her. I had a feeling she wouldn&#39;t share it with the others in the room. But I hoped she would at least confide in me.
+
+Her best friend.]</tw-passagedata><tw-passagedata pid="13" name="Realisations" tags="needs-picture-4" position="325,1025" size="100,100">(t8n-delay: 2s) + (t8n: &quot;fade&quot;) [The sound of my heartbeat was loud in my ears, my pearl sautoir necklace dangled in the air in front of me.]
 
 (t8n-delay: 4s) + (t8n: &quot;fade-down&quot;) [Arlene&#39;s hand was in mine, clutching it to the point I felt my circulation cut short.]
 
@@ -536,48 +611,9 @@ I looked at Arthur, only one solution coming to mind to make sure you’d stay q
 
 (t8n-delay: 34s) + (t8n: &quot;fade-down&quot;) [~~I couldn&#39;t figure out what in the world was wrong with her.~~]
 
-(t8n-delay: 32s ) + (t8n: &quot;fade-down&quot;) [Arthur raised his glass up high in Arlene&#39;s direction, a cold smile playing on his lips.]
+(t8n-delay: 38s) + (t8n: &quot;fade-down&quot;) [She was clutching my hand as if her life depeneded on it, which I suppose it did, staring at Arthur in horror.]
 
-
- 
-	It turned out you had found out what we had done, or more precisely you were there when it happened, we just did not see you.  
-	Arthur learned that the boy, James, was one of the people working undercover to bring down the speakeasy from the inside out. He was telling people who didn’t have any business being inside the speakeasy’s code, which was privy to well trusted individuals and the various performers. 
-To be honest, I didn’t expect you to have fallen for James’ advances. He was seeking you out after shows, buying you drinks, flowers, elaborate gifts. But what you didn’t realise was that he was using you to get information on us; the biggest jazz band of the roaring twenties. We were everywhere. I suppose he didn’t approve of the ways we became famous.
-
-Now when I think about the night of your death, it makes sense why you were clutching my hand as if your life depended on it, and staring at Arthur in horror. You thought I would be able to save you from him. Because you saw the good in people, in me, you thought I wasn’t involved with James’ death, that I was merely there because Arthur coerced me, blackmailed me. And I suppose you were right to doubt my involvement, because why would your best friend have a hand in your lover’s death?</tw-passagedata><tw-passagedata pid="14" name="Fatal flaw" tags="" position="600,925" size="100,100">(live: 0.05s)[
-(set: $text to &quot;Myself and Arthur exploited low paid officers to keep the speakeasy a secret, though from what I knew, other speakeasies were doing the same, so I never understood why it was such a problem when we did it.
-
-All I have ever wanted was for us to succeed. I wanted us to be the highlight of every conversation. I wanted the speakeasy to be full to the brim of people who were there just to see us perform. And keeping the speakeasy hidden, and occasionally pointing fingers at competition and whispering in officials&#39; ears was the only way we were going to reach that. No one can hardly blame me, right? 
-
-James was clever, I&#39;ll give him that, but he wasn&#39;t clever enough. Arthur slowly befriended James, and nobody could go up against Arthur&#39;s charm and walk away unscathed. Arthur, James and I would sit around tables with candles flickering in glass holders, clinking flutes of champagne and laughing as if we were old friends. We fabricated a lie about how we wanted to close this specific speakeasy since the owner was mistreating us and was not paying us what we deserved.
-
-It makes me laugh how easy it was for James to trust and believe us. How can someone like him ever be an undercover? It was absurd, but it worked in our favour. Arthur asked James to meet us at an alleyway far from the secret door that led down to the speakeasy to finalise our plan of &#39;raiding the speakeasy&#39; with his Official friends. 
-
-Arthur did not hesitate to drive that knife in James&#39; gut, and I stood watching, guilt gnawing at my stomach, but I did nothing to stop him.&quot;)
-(set: $index to it + 1)
-(if: $index &lt;= $text&#39;s length)[
-(replace: ?typewriter)[(substring: $text, 1, $index)]
-](else:)[
-(stop:)
-]
-]
-
-(live: 2.5s)[
-(set: $fadeIndex to $text&#39;s length)
-(stop:)
-]
-
-(live: 2.55s)[
-(set: $fadeIndex to it - 3)
-(if: $fadeIndex &gt;= 0)[
-(replace: ?typewriter)[(substring: $text, 1, $fadeIndex)]
-](else:)[
-(replace: ?typewriter)[]
-(stop:)
-]
-]
-
-|typewriter&gt;[]</tw-passagedata><tw-passagedata pid="15" name="How did it end???" tags="" position="475,1075" size="100,100">I had a strange, but certain inkling that Arlene would come and find me,(click-replace:&quot;find me,&quot;) [ to confront me.]  I was the one person she could easily talk to. 
+(t8n-delay: 40s ) + (t8n: &quot;fade-down&quot;) [And Arthur raised his glass up high in Arlene&#39;s direction, a cold smile playing on his lips.]</tw-passagedata><tw-passagedata pid="14" name="How did it end???" tags="needs-picture-2" position="475,1075" size="100,100">I had a strange, but certain inkling that Arlene would come and find me,(click-replace:&quot;find me,&quot;) [ to confront me.]  I was the one person she could easily talk to. 
 
 I left Arthur and went to the dressing room Arlene and I shared to change out of my stage outfit. I faced the mirror, working on untangling my head piece from my hair, when the door opened, and Arlene walked in. (click-append:&quot;Arlene walked in.&quot;) [
 
@@ -629,7 +665,7 @@ I could hear Arlene crying and I looked at her through the mirror to see her clu
 
 She stayed quiet, so I went on,] (click-append:&quot;She stayed quiet, so I went on,&quot;) [ //we did what we had to do to save ourselves. To save you.//] (click-append:&quot;we did what we had to do to save ourselves. To save you.&quot;) [
 
-//You’re lying,// Arlene muttered, her chest moving up and down in rapid breaths.] (click-append:&quot;her chest moving up and down in rapid breaths.&quot;) [ [[For once in your life, stop lying.]]] </tw-passagedata><tw-passagedata pid="16" name="News paper clipping" tags="background3" position="1000,1075" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="turn the hardcover page" tags="background1" position="600,175" size="100,100">
+//You’re lying,// Arlene muttered, her chest moving up and down in rapid breaths.] (click-append:&quot;her chest moving up and down in rapid breaths.&quot;) [ [[For once in your life, stop lying.]]] </tw-passagedata><tw-passagedata pid="15" name="News paper clipping" tags="background3" position="1000,1075" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="turn the hardcover page" tags="background1" position="600,175" size="100,100">
 
 
 
@@ -649,11 +685,27 @@ She stayed quiet, so I went on,] (click-append:&quot;She stayed quiet, so I went
 
 (after: 6s)[(goto: &quot;back to entries&quot;)]
 
-</tw-passagedata><tw-passagedata pid="18" name="Why I left" tags="" position="300,450" size="100,100">I don’t remember much about my childhood, and what I do remember has always been fragmented.
+</tw-passagedata><tw-passagedata pid="17" name="Why I left" tags="needs-pictures-14" position="300,450" size="100,100">I don’t remember much about my childhood, and what I do remember has always been fragmented. This is why I wish I had started a journal earlier in my life, perhaps it would&#39;ve helped me fill the blanks, or at least explain why I am the why I am. 
 
-None of it matters as much. Now that I am older, I can recall the rare times my mom showed her smile that wrinkled her eyes, or the rare moments my dad was home and happy and not letting out the angers of the day on us. His actions got creative as the years went by. One day it was a yell, the other would be a slap, and another would be a kick in the ribs that had be flying down the stairs. 
-He mocked my music, too. I never understood why. He was the reason Mom had put me in music lessons in the first place. I learned how to play the piano, learned the clarinet, learned how to sing. It is where my love for jazz had blossomed. Often times he would thump at my door and yell at me to keep my voice down, other times he would storm in, break my clarinet in half and walk out, pretending as my mom hadn’t spent a month’s pay check to buy it for me as a birthday present.      
-I was in such agony to escape, and I felt my existence was tainted in some subtle but essential way. </tw-passagedata><tw-passagedata pid="19" name="trials and errors" tags="" position="1300,200" size="100,100">(text-colour: white) + (hover-style:(text-colour: green)) 
+All I know is that my childhood wasn&#39;t a normal one. (click-append:&quot;All I know is that my childhood wasn&#39;t a normal one.&quot;) [
+
+I didn&#39;t have a hardworking loving father who tucked me into bed every night. I didn&#39;t have a father with a soft touch who would embrace me when I cried. I used to hear my classmates talk about how their fathers bought them candy and gifts just because they wanted to, and I wondered what that was like.
+
+I didn&#39;t have a mother who was a constant in my life. I didn&#39;t have a mother who comforted me when I had nightmares. I didn&#39;t have a mother who helped me pick out clothes for me or washed my school uniform, that is if she even remembered to wake up to take me to school.
+
+Someone once told me certain loves could be bad for you, and my father showed his in shades of black and blue.] (click-append:&quot;black and blue.&quot;) [ Loud voice.] (click-append:&quot;Loud voice.&quot;) [ Angry eyes.] (click-append:&quot;Angry eyes.&quot;) [ Tough hands.] (click-append:&quot;Tough hands.&quot;) [
+
+The only thing that pulled me out of bed most mornings was my clarinet and the old record player my mum abandoned in the basement a while ago. She had a beautiful collection of jazz music she didn&#39;t bother listening to anymore.
+
+I drowned my parents&#39; yells with music, it felt like I was floating above everything, that I wasn&#39;t alone out here, that someday, maybe, I could make something of myself. 
+
+I made a promise to myself on my seventeenth birthday.] (click-append:&quot;I made a promise to myself on my seventeenth birthday.&quot;)[
+
+I //would// get out of that house without anyone&#39;s help. I //would// become successful, no matter what it took, and I //would not// allow my parents&#39; mistakes and behaviours overshadow what I decide to do with my life.
+
+And I try to forgive it, but it all comes back to me.] 
+
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="18" name="trials and errors" tags="" position="1300,200" size="100,100">(text-colour: white) + (hover-style:(text-colour: green)) 
 + (click-append: &quot;fear&quot;) [ HELLO]
     (replace: &quot;fear&quot;)[(text-colour: white)[&quot;fear&quot;]]
     but my own hand
@@ -688,6 +740,51 @@ I was in such agony to escape, and I felt my existence was tainted in some subtl
 
 |typewriter&gt;[]
 
+(set: $hiddenText to &quot;This is the secret message.&quot;)
+
+(link: &quot;Decrypt message&quot;)[
+  (replace: ?secret)[(print: $hiddenText)]
+]
+
+|secret&gt;[██████████████████]
+
+
+
+&lt;img src=&quot;./images/entries.jpg&quot; usemap=&quot;#image-map&quot;&gt;
+
+&lt;map name=&quot;image-map&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;Why I left&quot; title=&quot;Why I left&quot; href=&quot;&quot; coords=&quot;957,231,594,151&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;Arlene&quot; title=&quot;Arlene&quot; href=&quot;&quot; coords=&quot;938,237,599,303&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;House of horrors&quot; title=&quot;House of horrors&quot; href=&quot;&quot; coords=&quot;580,309,1062,356&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;Enigma&quot; title=&quot;Enigma&quot; href=&quot;&quot; coords=&quot;604,378,857,449&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;Ensemble&quot; title=&quot;Ensemble&quot; href=&quot;&quot; coords=&quot;599,458,953,529&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;Rise to fame&quot; title=&quot;Rise to fame&quot; href=&quot;&quot; coords=&quot;612,534,972,600&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;Our last show&quot; title=&quot;Our last show&quot; href=&quot;&quot; coords=&quot;599,604,991,665&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;Realisations&quot; title=&quot;Realisations&quot; href=&quot;&quot; coords=&quot;607,670,991,743&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;Course of action&quot; title=&quot;Course of action&quot; href=&quot;&quot; coords=&quot;607,748,1038,817&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;Fatal flaw&quot; title=&quot;Fatal flaw&quot; href=&quot;&quot; coords=&quot;604,822,960,875&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;How did it end???&quot; title=&quot;How did it end???&quot; href=&quot;&quot; coords=&quot;589,885,1136,956&quot; shape=&quot;rect&quot;&gt;
+    &lt;area target=&quot;&quot; alt=&quot;News paper clipping&quot; title=&quot;News paper clipping&quot; href=&quot;&quot; coords=&quot;606,965,1135,1039&quot; shape=&quot;rect&quot;&gt;
+&lt;/map&gt;
+
+
+
+&lt;script&gt;
+ $(&#39;area&#39;).on(&#39;click&#39;, function(e){
+   e.preventDefault();
+   Harlowe.goto(this.alt);
+ });
+&lt;/script&gt;
+
+&lt;script&gt;
+ $(&#39;area&#39;).on(&#39;click&#39;, function(e){
+   e.preventDefault();
+   Harlowe.goto(this.alt);
+ });
+ $(&#39;map&#39;).imageMapResize();
+&lt;/script&gt;
+
+
 
 Arlene never came out of that dressing room, never went past the secret door of the speakeasy.
 
@@ -704,8 +801,7 @@ Kneeling beside your bleeding body, clutching your hand that was painted with my
 Arthur unbuttoned his suit jacket and draped it around my shoulders. I pulled it tight against my body.
 
 And hoped no one else saw the blood spatter on my dress. 
-
-</tw-passagedata><tw-passagedata pid="20" name="Flip the page" tags="background10" position="1200,600" size="100,100">I didn&#39;t think I would be admitting this, but there is no better place to keep this hidden other than the pages of my journal. (click-append:&quot;journal.&quot;) [
+</tw-passagedata><tw-passagedata pid="19" name="Flip the page" tags="background10" position="1200,600" size="100,100">I didn&#39;t think I would be admitting this, but there is no better place to keep this hidden other than the pages of my journal. (click-append:&quot;journal.&quot;) [
 
 I am not seeing Arlene&#39;s point in how Arthur is an awful person.
 
@@ -761,12 +857,12 @@ My arms were around his waist before he could finish his sentence.]
 
 &lt;audio src=&quot;./audio/breakfast.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
 
-(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="21" name="Rise to fame" tags="" position="850,825" size="100,100">camera flashes 
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="20" name="Rise to fame" tags="" position="850,825" size="100,100">camera flashes 
 
 (print: &quot;&lt;div class=&#39;flash-overlay&#39;&gt;&lt;/div&gt;&quot;)
 
 
-</tw-passagedata><tw-passagedata pid="22" name="For once in your life, stop lying." tags="" position="600,1200" size="100,100">(align:&quot;&lt;==&gt;&quot;)+(box:&quot;=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=========&quot;)[|sentence1)[Arlene never came out of that dressing room, never went past the secret door of the speakeasy.]
+</tw-passagedata><tw-passagedata pid="21" name="For once in your life, stop lying." tags="needs-picture-3" position="600,1200" size="100,100">(align:&quot;&lt;==&gt;&quot;)+(box:&quot;=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=========&quot;)[|sentence1)[Arlene never came out of that dressing room, never went past the secret door of the speakeasy.]
 ]
 
 (align:&quot;==&gt;&quot;)+(box:&quot;===========================XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX===&quot;)[|sentence2)[Genevieve was the one to find her.]]
@@ -833,7 +929,43 @@ My arms were around his waist before he could finish his sentence.]
 ]
 
 
-</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="22" name="I know what you did" tags="needs-pictures-13" position="200,1200" size="100,100">(set: $hiddenText to &quot;Myself and Arthur exploited low paid officers to keep the speakeasy a secret, though from what I knew, other speakeasies were doing the same, so I never understood why it was such a problem when we did it.
+
+All I have ever wanted was for us to succeed. I wanted us to be the highlight of every conversation. I wanted the speakeasy to be full to the brim of people who were there just to see us perform.
+
+And keeping the speakeasy hidden, and occasionally pointing fingers at competition and whispering in officials&#39; ears was the only way we were going to reach that. No one can hardly blame me, right?
+
+A problem arouse in the name of James Russo, a prohibtion agent who was tasked with the aggravating mission of raiding //my// speakeasy from the inside out. He posed as a charming regular at first; laughing with patrons, taking dancers by the hand and twirling them around the dance floor. He drank the alcohol he was so adamant on banning. 
+
+Arthur slowly befriended James once he noticed just how often he was loitring around. Arthur even saw him one night leave with a liqour bottle and paper records he didn&#39;t have when he first entered that night. 
+
+James was clever, I&#39;ll give him that, but he wasn&#39;t clever enough. People often think they can go up against Arthur&#39;s charm and walk away unscathed. 
+
+Arthur introduced me to James, and soon after, Arthur, James and I would sit around tables with candles flickering in glass holders, clinking flutes of champagne and laughing as if we were old friends.
+
+We fabricated a lie about how we wanted to close this specific speakeasy since the owner was mistreating us and was not paying us what we deserved.
+
+It makes me laugh how easy it was for James to trust and believe us. How can someone like him ever be an undercover? It was absurd, but it worked in our favour.
+
+A good while after Arthur was completely sure James wasn&#39;t stopping at nothing to bring us down, Arthur asked James to meet us at an alleyway, far from the secret door that led down to the speakeasy to finalise our plan of &#39;raiding it&#39; with his Official friends.
+
+Arthur did not hesitate to drive that knife in James&#39; gut, and I stood watching, guilt gnawing at my stomach, but I did nothing to stop him.
+
+I&#39;m aware with how I am always praising Arthur&#39;s wits, and to a certain point I have believed he can protect me, but Arthur also believes himself Icarus. Anything and everything will go his way. Though, I don&#39;t think he could have predicted Arlene falling in love with James.
+
+I noticed after our performances, James would be clapping the loudest, eyes trained on Arlene, and Arlene only. He would seek her out after she leaves the stage, buying her drinks, flowers, elaborate gifts. To be completely honest, I relied on the fact that Arlene would realise it was all a ruse, that she was just a way for James to really be //in// with everyone. To get information on //my// troupe
+
+I couldn&#39;t see that happening in front of my eyes and do nothing, could I?
+
+I shouldn&#39;t have been as surprised as I was to know Arlene found out what ~~we~~ Arthur did. She was oblivious most times, but I hate to admit it to myself, I might have underestimated her will to stand for what is right and what is wrong.
+
+She was there when it happened. We didn&#39;t see her, but she saw //us//.&quot;)
+
+(link: &quot;██████████████████&quot;)[
+  (replace: ?secret)[(print: $hiddenText)]
+]
+
+|secret&gt;[]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
