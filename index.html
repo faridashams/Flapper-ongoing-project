@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Flapper .</tw-noscript></noscript></tw-story>
-<tw-storydata name="Flapper " startnode="7" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="D5C6EAF8-F68C-41C6-A0FE-49DF9028FA31" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@font-face {
+<tw-storydata name="Flapper " startnode="23" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="D5C6EAF8-F68C-41C6-A0FE-49DF9028FA31" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@font-face {
   font-family: "angelina";
   src: url("https://cdn.jsdelivr.net/gh/faridashams/twine-fonts/angelina.TTF") format("truetype");
 }
@@ -138,6 +138,10 @@ tw-story[tags~="background2"] {
 
 tw-story[tags~="firstpage"] {
   background: url('images/magazine.jpg') center center / cover no-repeat fixed;
+}
+
+tw-story[tags~="begin"] {
+  background: url('images/blank.jpg') center center / cover no-repeat fixed;
 }
 
 
@@ -391,7 +395,7 @@ tw-hook {
 
 // Harlowe Macro Framework, by Chapel; version 1.0.2
 ;!function(){"use strict";var r={major:1,minor:0,patch:2},e=[r.major,r.minor,r.patch].join(".");r.semantic=e,r=Object.freeze(r);var t=$("tw-storydata"),a=Object.freeze({name:t.attr("name"),ifid:t.attr("ifid")}),n=t.attr("format-version"),o=n.split("."),i=Object.freeze({major:o[0],minor:o[1],patch:o[2],semantic:n});window.Harlowe=window.Harlowe||{},window.Harlowe=Object.assign(window.Harlowe,{framework:r,API_ACCESS:Object.freeze({MACROS:require("macros"),STATE:require("state"),CHANGER:require("datatypes/changercommand"),ENGINE:require("engine")}),engine:i,story:a})}(),function(){"use strict";function e(r){return"number"==typeof r||"boolean"==typeof r||"string"==typeof r||null===r||Array.isArray(r)&&r.every(e)||r instanceof Set&&Array.from(r).every(e)||r instanceof Map&&Array.from(r.values()).every(e)||_changer.isPrototypeOf(r)}window.Harlowe=Object.assign(window.Harlowe,{helpers:{isSerialisable:e,isSerializable:e,arrayify:function(r,e){if(r){var t=[].slice.call(r);return void 0!==e&&(t=t.slice(e)),t}},getPassageData:function(r){var e=$('tw-passagedata[name="'+r+'"]');if(e[0])return e}}})}(),function(){"use strict";var n=window.localStorage||!1,o=Harlowe.story.ifid+"-tw-storage";function r(){try{if(!n)throw new Error("storage is inaccessible");n.setItem(o,JSON.stringify({ifid:Harlowe.story.ifid}))}catch(r){console.warn(r)}}function i(r){try{var e;if(n)return e=JSON.parse(n.getItem(o)),r&&r&&"string"==typeof r?e[r]:e;throw new Error("storage is inaccessible")}catch(r){console.warn(r)}}null==i()&&r(),Harlowe.storage={clear:r,save:function(r,e){try{if(!r||"string"!=typeof r)throw new TypeError("cannot store values without a valid storage key");if(void 0===e)throw new TypeError("cannot store undefined values");var t={};if(t[r]=e,!n)throw new Error("storage is inaccessible");var a=i();Object.assign(a,t),n.setItem(o,JSON.stringify(a))}catch(r){console.warn(r)}},load:i,remove:function(r){try{if(!r||"string"!=typeof r)throw new TypeError("cannot store values without a valid storage key");if(!n)throw new Error("storage is inaccessible");var e=i();e.hasOwnProperty(r)&&(delete e[r],n.setItem(o,JSON.stringify(e)))}catch(r){console.warn(r)}}}}(),function(){"use strict";function a(r,e,t){if(!(this instanceof a))return new a(r,e,t);this.name=r||"unknown",this.args=e||[],this.data=t||{},this.type=t&&t.type||"basic",this.fn=t&&t.fn||"handler","changer"===this.type&&("handler"===this.fn?this.instance=t&&t.instance||null:this.descriptor=t&&t.descriptor||null)}a.create=function(r,e,t){if(!r||"string"!=typeof r||!r.trim())throw new TypeError("Invalid macro name.");return e&&e instanceof Array||(e=[]),t&&"object"==typeof t||(t={type:"basic",fn:"handler"}),new a(r,e,t)},Object.assign(a.prototype,{clone:function(){return a.create(this.name,this.args,this.data)},syntax:function(){return"("+this.name+":)"},error:function(r,e){var t="Error in the "+this.syntax()+" macro: "+r;return e&&alert(t),console.warn("HARLOWE CUSTOM MACRO ERROR -> ",t),new Error(r)},typeCheck:function(r){r&&r instanceof Array||(r=Harlowe.helpers.arrayify(arguments));var n=this,o=[];if(r.forEach(function(r,e){var t=e+1,a=[];"string"==typeof r&&("any"===(a=r.includes("|")?r.split("|").map(function(r){return r.trim().toLowerCase()}):[r.trim().toLowerCase()])[0]||a.some(function(r){return typeof n.args[e]===r})||o.push("argument "+t+" should be a(n) "+a.join(" or ")))}),o.length)return n.error(o.join("; "))}}),window.Harlowe=Object.assign(window.Harlowe,{MacroContext:a})}(),function(){"use strict";var c=Harlowe.API_ACCESS.MACROS,l=Harlowe.API_ACCESS.CHANGER;window.Harlowe=Object.assign(window.Harlowe||{},{macro:function(r,e,t){if(!r||"string"!=typeof r||!r.trim())throw new TypeError("Invalid macro name.");if(!e||"function"!=typeof e)throw new TypeError("Invalid macro handler.");var a,n,o,i,s;t&&"function"==typeof t?(o=r,i=e,s=t,c.addChanger(o,function(){var r=Harlowe.helpers.arrayify(arguments,1),e=l.create(o,r),t=Harlowe.MacroContext.create(o,r,{type:"changer",fn:"handler",instance:e});return i.apply(t,r),e},function(){var r=Harlowe.helpers.arrayify(arguments),e=r.shift(),t=Harlowe.MacroContext.create(o,r,{type:"changer",fn:"changer",descriptor:e});s.apply(t,r)},c.TypeSignature.zeroOrMore(c.TypeSignature.Any))):(a=r,n=e,c.add(a,function(){var r=Harlowe.helpers.arrayify(arguments,1),e=Harlowe.MacroContext.create(a,r,{type:"basic",fn:"handler"}),t=n.apply(e,r);return null==t?"":t},c.TypeSignature.zeroOrMore(c.TypeSignature.Any)))}})}(),function(){"use strict";var t=Harlowe.API_ACCESS.STATE,e=Harlowe.API_ACCESS.ENGINE;function a(){return t.passage}window.Harlowe=Object.assign(window.Harlowe||{},{passage:a,tags:function(r){r=r||a();try{var e=Harlowe.helpers.getPassageData(r).attr("tags");return e?e.split(" "):[]}catch(r){return console.warn(r.message),[]}},goto:function(r){return e.goToPassage(r)},variable:function(r,e){if("$"!==r[0])throw new Error('cannot access variable "'+r+'"');if(r=r.substr(1),void 0!==e){if(!Harlowe.helpers.isSerialisable(e))throw new Error('The value passed to variable "'+r+'" cannot be serialized.');t.variables[r]=e}return t.variables[r]},visited:function(r){return t.passageNameVisited(r||a())},hasVisited:function(r){return 0<t.passageNameVisited(r||a())},turns:function(){return t.pastLength}})}();
-// end Harlowe Macro Framework</script><tw-tag name="firstpage" color="purple"></tw-tag><tw-tag name="background1" color="green"></tw-tag><tw-tag name="background10" color="green"></tw-tag><tw-tag name="background12" color="green"></tw-tag><tw-tag name="background13" color="purple"></tw-tag><tw-tag name="background14" color="green"></tw-tag><tw-tag name="background15" color="green"></tw-tag><tw-tag name="background3" color="green"></tw-tag><tw-tag name="background2" color="green"></tw-tag><tw-tag name="background7" color="green"></tw-tag><tw-tag name="background5" color="green"></tw-tag><tw-tag name="background6" color="green"></tw-tag><tw-tag name="needs-picture" color="purple"></tw-tag><tw-tag name="needs-picture-2" color="purple"></tw-tag><tw-tag name="needs-picture-3" color="purple"></tw-tag><tw-tag name="needs-picture-4" color="purple"></tw-tag><tw-tag name="needs-pictures-13" color="purple"></tw-tag><tw-tag name="needs-pictures-14" color="purple"></tw-tag><tw-tag name="background8" color="green"></tw-tag><tw-tag name="background11" color="green"></tw-tag><tw-tag name="background16" color="green"></tw-tag><tw-tag name="background17" color="green"></tw-tag><tw-tag name="background18" color="green"></tw-tag><tw-passagedata pid="1" name="back to entries" tags="background4 imagemap" position="600,300" size="100,100">
+// end Harlowe Macro Framework</script><tw-tag name="background1" color="green"></tw-tag><tw-tag name="background10" color="green"></tw-tag><tw-tag name="background12" color="green"></tw-tag><tw-tag name="background13" color="purple"></tw-tag><tw-tag name="background14" color="green"></tw-tag><tw-tag name="background15" color="green"></tw-tag><tw-tag name="background3" color="green"></tw-tag><tw-tag name="background2" color="green"></tw-tag><tw-tag name="background7" color="green"></tw-tag><tw-tag name="background5" color="green"></tw-tag><tw-tag name="background6" color="green"></tw-tag><tw-tag name="needs-picture" color="purple"></tw-tag><tw-tag name="needs-picture-2" color="purple"></tw-tag><tw-tag name="needs-picture-3" color="purple"></tw-tag><tw-tag name="needs-picture-4" color="purple"></tw-tag><tw-tag name="needs-pictures-13" color="purple"></tw-tag><tw-tag name="needs-pictures-14" color="purple"></tw-tag><tw-tag name="background8" color="green"></tw-tag><tw-tag name="background11" color="green"></tw-tag><tw-tag name="background16" color="green"></tw-tag><tw-tag name="background17" color="green"></tw-tag><tw-tag name="background18" color="green"></tw-tag><tw-passagedata pid="1" name="back to entries" tags="background4 imagemap" position="600,300" size="100,100">
 [[Why I left]]
 [[Arlene]]
 [[House of horrors]]
@@ -512,19 +516,7 @@ Julian&#39;s family in comparison, was large. He had many siblings and even more
 
 Luckily however, at that one specific gathering, I happened to meet a [[Thomas Keating]].] 
 
-(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="7" name="start here" tags="firstpage" position="600,50" size="100,100">Could compulsivity be considered a fatal flaw?
-
-Achilles&#39; fatal flaw was his pride, anger, and overconfidence. Icaurs&#39; fatal flaw was his arrogance and exhilaration. And mine? (click-append: &quot;And mine?&quot;) [ Mine is wanting all or nothing.]
-
-Suceeding, having everything fit into the palm of my hands, the cameras, the flashes, is all I live for. It is not so difficult to believe I formed into this person, (click-append: &quot;I formed into this person,&quot;) [ not when you unravel the entire story.]
-
-I remember the curtains drapping shut, the tears that followed, his jacket around my shoulder and his hand in mine.
-
-I suppose I had many scenarios happen in my lifetime I would have enjoyed to tell, but this one is for myself, and myself only.
-
-So, if you happen to stumble upon this, leave the journal as it is, or perhaps if you are a person as curious as me, [[turn the hardcover page]], but first, promise you know how to keep a secret. 
-
-</tw-passagedata><tw-passagedata pid="8" name="House of horrors" tags="background6" position="950,600" size="100,100">I moved in.
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="7" name="House of horrors" tags="background6" position="950,600" size="100,100">I moved in.
 
 It did not take much convincing for me to say yes. Arlene was generous enough to offer me one of the many spare bedrooms her house held.
 
@@ -542,7 +534,7 @@ Arlene gave the hallway Arthur disappeared into a scathing look before glancing 
 
 She placed her teacup on the surface and leaned across the table closer to me,] (click-append:&quot;She placed her teacup on the surface and leaned across the table closer to me,&quot;)  [ //honestly, Estelle. I’m waiting for my mum to tire of his dad so we can leave this house. I’m never comfortable here, it’s like I’m waiting for some kind of disaster to happen.//]
 
-(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="9" name="Ensemble" tags="background15" position="300,625" size="100,100">Never having friends as a child proved to take great effect on me as a teenager and through my adult life. (click-append:&quot;teenager and through my adult life.&quot;) [ I was called blasé, aloof, and unapproachable.] I didn&#39;t think, and //don&#39;t// think that is true, but to each his own.
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="8" name="Ensemble" tags="background15" position="300,625" size="100,100">Never having friends as a child proved to take great effect on me as a teenager and through my adult life. (click-append:&quot;teenager and through my adult life.&quot;) [ I was called blasé, aloof, and unapproachable.] I didn&#39;t think, and //don&#39;t// think that is true, but to each his own.
 
 I suppose, then, it wasn&#39;t so difficult to understand why I was quick to attach myself to my friends, and to their lives as I knew it. Their lives, no matter chaotic or loved, seemed fullfiling to me. (click-append:&quot;fullfiling to me&quot;) [
 
@@ -553,7 +545,7 @@ All five of them glimpses of their familial lives. They welcomed me in, and I em
 [[Arlene]] was the first one I encountered near that pay station. Then I met [[Genevieve]] through Arlene. [[Edward, Julian, and Thomas]] were introduced to me soon after.
 
 
-</tw-passagedata><tw-passagedata pid="10" name="Enigma" tags="background7" position="1075,475" size="100,100">I went downstairs for a glass of water. Arthur was there, sitting on a barstool having a drink and sifting through documents. 
+</tw-passagedata><tw-passagedata pid="9" name="Enigma" tags="background7" position="1075,475" size="100,100">I went downstairs for a glass of water. Arthur was there, sitting on a barstool having a drink and sifting through documents. 
 
 I hadn’t had a proper conversation with him until that moment. It seemed as if he was never home, or if he was (click-replace: &quot;or if he was&quot;) [ I wasn’t seeking him out.]
 
@@ -601,7 +593,7 @@ He raised his eyebrows and downed the rest of his drink, scrutinising me from ab
 
 Only after I went back up the stairs, into the bedroom I had claimed to be mine, and nestled under the covers,] (click-append:&quot;, and nestled under the covers,&quot;) [ I realised he never answered my question.]
 
-(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[Flip the page]]</tw-passagedata><tw-passagedata pid="11" name="Course of action" tags="background17" position="375,800" size="100,100">[|sentence1)[[[I know what you did]]]
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[Flip the page]]</tw-passagedata><tw-passagedata pid="10" name="Course of action" tags="background17" position="375,800" size="100,100">[|sentence1)[[[I know what you did]]]
 ]
 
 |sentence2)[//What do you mean Arlene knows?// I asked Arthur after the guests cleared out. The opulent ballroom, intimate and mysterious, only illuminated by candlelight, was vacant. Chairs were scrapped back, some laying on their sides. My Mary Janes peeled off the wooden floor as I strode over to Arthur, remnant liquids stuck to the sole of my shoes. 
@@ -639,7 +631,7 @@ I looked at Arthur, only one solution coming to mind to make sure she&#39;d stay
 (transition: &quot;dissolve&quot;)[(show: ?sentence2)]
 (stop:)
 ]
-</tw-passagedata><tw-passagedata pid="12" name="Our last show" tags="background8" position="700,800" size="100,100">The dressing room was dark and smoky, and it was cramped. We were almost walking on top of each other.
+</tw-passagedata><tw-passagedata pid="11" name="Our last show" tags="background8" position="700,800" size="100,100">The dressing room was dark and smoky, and it was cramped. We were almost walking on top of each other.
 
 I was facing a cracked mirror, reapplying my red lipstick when Genevieve&#39;s elbow shoved into my arm, smudging the lipstick in places it shouldn&#39;t be smudged.
 
@@ -721,7 +713,7 @@ I gave him a nod and looked at my troupe. My friends I didn&#39;t think I&#39;d 
 
 We all laughed and cheered, except Arlene, who was looking down at her shoes. I would need to speak to her after the show to find out what really is wrong with her. I had a feeling she wouldn&#39;t share it with the others in the room. But I hoped she would at least confide in me.
 
-Her best friend.]</tw-passagedata><tw-passagedata pid="13" name="Realisations" tags="background18" position="325,1025" size="100,100">(t8n-delay: 2s) + (t8n: &quot;fade&quot;) [The sound of my heartbeat was loud in my ears, my pearl sautoir necklace dangled in the air in front of me.]
+Her best friend.]</tw-passagedata><tw-passagedata pid="12" name="Realisations" tags="background18" position="325,1025" size="100,100">(t8n-delay: 2s) + (t8n: &quot;fade&quot;) [The sound of my heartbeat was loud in my ears, my pearl sautoir necklace dangled in the air in front of me.]
 
 (t8n-delay: 4s) + (t8n: &quot;fade-down&quot;) [Arlene&#39;s hand was in mine, clutching it to the point I felt my circulation cut short.]
 
@@ -741,7 +733,7 @@ Her best friend.]</tw-passagedata><tw-passagedata pid="13" name="Realisations" t
 
 (t8n-delay: 40s ) + (t8n: &quot;fade-down&quot;) [And Arthur raised his glass up high in Arlene&#39;s direction, a cold smile playing on his lips.]
 
-(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="14" name="How did it end???" tags="needs-picture-2" position="475,1075" size="100,100">I had a strange, but certain inkling that Arlene would come and find me,(click-replace:&quot;find me,&quot;) [ to confront me.]  I was the one person she could easily talk to. 
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="13" name="How did it end???" tags="needs-picture-2" position="475,1075" size="100,100">I had a strange, but certain inkling that Arlene would come and find me,(click-replace:&quot;find me,&quot;) [ to confront me.]  I was the one person she could easily talk to. 
 
 I left Arthur and went to the dressing room Arlene and I shared to change out of my stage outfit. I faced the mirror, working on untangling my head piece from my hair, when the door opened, and Arlene walked in. (click-append:&quot;Arlene walked in.&quot;) [
 
@@ -793,7 +785,7 @@ I could hear Arlene crying and I looked at her through the mirror to see her clu
 
 She stayed quiet, so I went on,] (click-append:&quot;She stayed quiet, so I went on,&quot;) [ //we did what we had to do to save ourselves. To save you.//] (click-append:&quot;we did what we had to do to save ourselves. To save you.&quot;) [
 
-//You’re lying,// Arlene muttered, her chest moving up and down in rapid breaths.] (click-append:&quot;her chest moving up and down in rapid breaths.&quot;) [ [[For once in your life, stop lying.]]] </tw-passagedata><tw-passagedata pid="15" name="News paper clipping" tags="background3" position="1000,1075" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="turn the hardcover page" tags="background1" position="600,175" size="100,100">
+//You’re lying,// Arlene muttered, her chest moving up and down in rapid breaths.] (click-append:&quot;her chest moving up and down in rapid breaths.&quot;) [ [[For once in your life, stop lying.]]] </tw-passagedata><tw-passagedata pid="14" name="News paper clipping" tags="background3" position="1000,1075" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="turn the hardcover page" tags="background1" position="600,175" size="100,100">
 
 
 
@@ -813,7 +805,7 @@ She stayed quiet, so I went on,] (click-append:&quot;She stayed quiet, so I went
 
 (after: 6s)[(goto: &quot;back to entries&quot;)]
 
-</tw-passagedata><tw-passagedata pid="17" name="Why I left" tags="background16" position="300,450" size="100,100">I don’t remember much about my childhood, and what I do remember has always been fragmented. This is why I wish I had started a journal earlier in my life, perhaps it would&#39;ve helped me fill the blanks, or at least explain why I am the why I am. 
+</tw-passagedata><tw-passagedata pid="16" name="Why I left" tags="background16" position="300,450" size="100,100">I don’t remember much about my childhood, and what I do remember has always been fragmented. This is why I wish I had started a journal earlier in my life, perhaps it would&#39;ve helped me fill the blanks, or at least explain why I am the why I am. 
 
 All I know is that my childhood wasn&#39;t a normal one. (click-append:&quot;All I know is that my childhood wasn&#39;t a normal one.&quot;) [
 
@@ -833,7 +825,7 @@ I //would// get out of that house without anyone&#39;s help. I //would// become 
 
 And I try to forgive it, but it all comes back to me.] 
 
-(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="18" name="trials and errors" tags="" position="1300,200" size="100,100">(text-colour: white) + (hover-style:(text-colour: green)) 
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="17" name="trials and errors" tags="" position="1300,200" size="100,100">(text-colour: white) + (hover-style:(text-colour: green)) 
 + (click-append: &quot;fear&quot;) [ HELLO]
     (replace: &quot;fear&quot;)[(text-colour: white)[&quot;fear&quot;]]
     but my own hand
@@ -929,7 +921,7 @@ Kneeling beside your bleeding body, clutching your hand that was painted with my
 Arthur unbuttoned his suit jacket and draped it around my shoulders. I pulled it tight against my body.
 
 And hoped no one else saw the blood spatter on my dress. 
-</tw-passagedata><tw-passagedata pid="19" name="Flip the page" tags="background10" position="1200,600" size="100,100">I didn&#39;t think I would be admitting this, but there is no better place to keep this hidden other than the pages of my journal. (click-append:&quot;journal.&quot;) [
+</tw-passagedata><tw-passagedata pid="18" name="Flip the page" tags="background10" position="1200,600" size="100,100">I didn&#39;t think I would be admitting this, but there is no better place to keep this hidden other than the pages of my journal. (click-append:&quot;journal.&quot;) [
 
 I am not seeing Arlene&#39;s point in how Arthur is an awful person.
 
@@ -985,12 +977,12 @@ My arms were around his waist before he could finish his sentence.]
 
 &lt;audio src=&quot;./audio/breakfast.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
 
-(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="20" name="Rise to fame" tags="" position="850,825" size="100,100">camera flashes 
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="19" name="Rise to fame" tags="" position="850,825" size="100,100">camera flashes 
 
 (print: &quot;&lt;div class=&#39;flash-overlay&#39;&gt;&lt;/div&gt;&quot;)
 
 
-</tw-passagedata><tw-passagedata pid="21" name="For once in your life, stop lying." tags="needs-picture-3" position="600,1200" size="100,100">(align:&quot;&lt;==&gt;&quot;)+(box:&quot;=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=========&quot;)[|sentence1)[Arlene never came out of that dressing room, never went past the secret door of the speakeasy.]
+</tw-passagedata><tw-passagedata pid="20" name="For once in your life, stop lying." tags="needs-picture-3" position="600,1200" size="100,100">(align:&quot;&lt;==&gt;&quot;)+(box:&quot;=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=========&quot;)[|sentence1)[Arlene never came out of that dressing room, never went past the secret door of the speakeasy.]
 ]
 
 (align:&quot;==&gt;&quot;)+(box:&quot;===========================XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX===&quot;)[|sentence2)[Genevieve was the one to find her.]]
@@ -1057,7 +1049,7 @@ My arms were around his waist before he could finish his sentence.]
 ]
 
 
-</tw-passagedata><tw-passagedata pid="22" name="I know what you did" tags="background11" position="525,825" size="100,100">(set: $hiddenText to &quot;Myself and Arthur exploited low paid officers to keep the speakeasy a secret, though from what I knew, other speakeasies were doing the same, so I never understood why it was such a problem when we did it.
+</tw-passagedata><tw-passagedata pid="21" name="I know what you did" tags="background11" position="525,825" size="100,100">(set: $hiddenText to &quot;Myself and Arthur exploited low paid officers to keep the speakeasy a secret, though from what I knew, other speakeasies were doing the same, so I never understood why it was such a problem when we did it.
 
 All I have ever wanted was for us to succeed. I wanted us to be the highlight of every conversation. I wanted the speakeasy to be full to the brim of people who were there just to see us perform.
 
@@ -1093,7 +1085,36 @@ She was there when it happened. We didn&#39;t see her, but she saw //us//.&quot;
   (replace: ?secret)[(print: $hiddenText)]
 ]
 
-|secret&gt;[]</tw-passagedata></tw-storydata>
+|secret&gt;[]</tw-passagedata><tw-passagedata pid="22" name="[begin" tags="begin" position="800,150" size="100,100">Could compulsivity be considered a fatal flaw?
+
+Achilles&#39; fatal flaw was his pride, anger, and overconfidence. Icaurs&#39; fatal flaw was his arrogance and exhilaration. And mine? (click-append: &quot;And mine?&quot;) [ Mine is wanting all or nothing.]
+
+Suceeding, having everything fit into the palm of my hands, the cameras, the flashes, is all I live for. It is not so difficult to believe I formed into this person, (click-append: &quot;I formed into this person,&quot;) [ not when you unravel the entire story.]
+
+I remember the curtains drapping shut, the tears that followed, his jacket around my shoulder and his hand in mine.
+
+I suppose I had many scenarios happen in my lifetime I would have enjoyed to tell, but this one is for myself, and myself only.
+
+So, if you happen to stumble upon this, leave the journal as it is, or perhaps if you are a person as curious as me, [[turn the hardcover page]], but first, promise you know how to keep a secret. 
+
+</tw-passagedata><tw-passagedata pid="23" name="start here" tags="firstpage" position="600,25" size="100,100">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(align:&quot;&lt;==&quot;)+(box:&quot;============XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX===&quot;)[[[begin]]]
+
+</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
