@@ -341,6 +341,16 @@ tw-story[tags~="background22"] {
 
 }
 
+tw-story[tags~="background23"] {
+  background: url('images/henry.jpg') center center / cover no-repeat fixed;
+}
+
+tw-story[tags~="background23"] {
+
+/*changed opacity*/  
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('images/henry.jpg') center center / cover no-repeat fixed;
+
+}
 
 /*
 body {
@@ -1299,7 +1309,23 @@ I dropped from the stage and strutted to an older man&#39;s table, sitting on th
 }
 &lt;/style&gt;
 
-&lt;audio src=&quot;./audio/jazz.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="26" name="From across the room..." tags="" position="850,1075" size="100,100">Henry McCartney leaned forward with his glass half raised in mesmerisation. (click-append:&quot;Henry McCartney leaned forward with his glass half raised in mesmerisation.&quot;) [
+&lt;div style=&quot;display:none;&quot;
+&lt;audio src=&quot;./audio/jazz.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
+&lt;/div&gt;
+
+
+&lt;script&gt;
+  if (!window.jazzAudio) {
+    var audio = new Audio(&#39;jazz.mp3&#39;);
+    audio.loop = true;
+    audio.play();
+    window.jazzAudio = audio;
+  }
+&lt;/script&gt;
+
+Your first passage content here.
+
+[[Go to next passage-&gt;From across the room...]]</tw-passagedata><tw-passagedata pid="26" name="From across the room..." tags="background23" position="850,1075" size="100,100">Henry McCartney leaned forward with his glass half raised in mesmerisation. (click-append:&quot;Henry McCartney leaned forward with his glass half raised in mesmerisation.&quot;) [
 
 //Arthur,// he muttered to the man seated beside him.] (click-append:&quot;Arthur, he muttered to the man seated beside him.&quot;) [ //Where the hell did you //find// them?//] (click-append:&quot; Where the hell did you find them?&quot;) [
 
@@ -1307,7 +1333,13 @@ Arthur didn&#39;t answer right away. He watched Estelle, the way she held the ro
 
 //I didn&#39;t find her,// he finally said.] (click-append:&quot;I didn&#39;t find her, he finally said.&quot;) [ //She found me.//
 
-[[Back on stage...]]]</tw-passagedata><tw-passagedata pid="27" name="Back on stage..." tags="" position="850,1200" size="100,100">&lt;style&gt;
+[[Back on stage...]]]
+
+&lt;!-- Audio continues automatically from previous position --&gt;
+
+Your second passage content here.
+
+[[Go to next passage-&gt;Back on stage...]]</tw-passagedata><tw-passagedata pid="27" name="Back on stage..." tags="" position="850,1200" size="100,100">&lt;style&gt;
 .flash-left {
   position: fixed;
   top: 0;
@@ -1376,16 +1408,27 @@ A beat of silence, then the crowd erupted. (click-append:&quot;then the crowd er
 
 McCartney was yelling.] (click-append:&quot;McCartney was yelling.&quot;) [ [[Put them on the books for Saturday! Hell, every Saturday!]]]
 
-(unless: $audioPlaying)[
-  (set: $audioPlaying to true)
-  &lt;audio id=&quot;jazzMusic&quot; loop autoplay&gt;
-    &lt;source src=&quot;./audio/jazz.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
-  &lt;/audio&gt;
-]
+&lt;div style=&quot;display:none;&quot;
+&lt;audio src=&quot;./audio/jazz.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
+&lt;/div&gt;
 
-Your first passage content here.
 
-[[Go to next passage-&gt;News paper clipping]]</tw-passagedata><tw-passagedata pid="28" name="Put them on the books for Saturday! Hell, every Saturday!" tags="" position="850,1325" size="100,100">&lt;div class=&quot;tw-prop&quot;&gt;
+&lt;!-- Audio continues automatically from previous position --&gt;
+
+Your third passage content here.
+
+&lt;script&gt;
+  if (window.jazzAudio) {
+    window.jazzAudio.pause();
+    window.jazzAudio = null;
+  }
+&lt;/script&gt;
+
+&lt;!-- Audio continues automatically from previous position --&gt;
+
+Your third passage content here.
+
+</tw-passagedata><tw-passagedata pid="28" name="Put them on the books for Saturday! Hell, every Saturday!" tags="" position="850,1325" size="100,100">&lt;div class=&quot;tw-prop&quot;&gt;
   &lt;h3&gt;The New York Times&lt;/h3&gt;
   &lt;strong&gt;April 4rd, 1922 – Vol. IX, No. 112&lt;/strong&gt;&lt;br&gt;
   &lt;em&gt;New Act Shaking The Roof!&lt;/em&gt;
@@ -1408,7 +1451,8 @@ Your first passage content here.
 
   &lt;p style=&quot;text-align:right;&quot;&gt;— E.L.F.&lt;/p&gt;
 &lt;/div&gt;
-</tw-passagedata></tw-storydata>
+
+&lt;audio src=&quot;./audio/clapping.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
