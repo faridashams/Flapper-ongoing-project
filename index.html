@@ -1197,66 +1197,35 @@ I suppose I had many scenarios happen in my lifetime I would have enjoyed to tel
 
 So, if you happen to stumble upon this, leave the journal as it is, or perhaps if you are a person as curious as me, [[turn the hardcover page]], but first, promise you know how to keep a secret. 
 
-</tw-passagedata><tw-passagedata pid="24" name="Untitled Passage" tags="" position="1500,350" size="100,100">&lt;div class=&quot;tw-prop&quot;&gt;
-  &lt;h3&gt;The Manhattan Clarion&lt;/h3&gt;
-  &lt;strong&gt;April 3rd, 1927 – Vol. IX, No. 112&lt;/strong&gt;&lt;br&gt;
-  &lt;em&gt;Scandal Beneath the Spotlight!&lt;/em&gt;
-  &lt;hr&gt;
-  &lt;p&gt;&lt;strong&gt;“Velvet Violet” Shocks Midnight Crowd at Club Obsidian&lt;/strong&gt;&lt;br&gt;
-  By Edith LeFevre, Society Desk&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;NEW YORK CITY —&lt;/strong&gt; Jazz may swing, but last night it &lt;em&gt;shattered&lt;/em&gt;. At precisely 12:17 a.m., rising speakeasy darling &lt;strong&gt;Velvet Violet&lt;/strong&gt; stunned the packed room at Club Obsidian with an act that is already being whispered across the boroughs.&lt;/p&gt;
-
-  &lt;p&gt;The number began like any other — sultry torchlight, slow clarinet, feather fans — but halfway through her performance, Violet &lt;strong&gt;uncorked a flask from her garter&lt;/strong&gt;, raised it in salute to the crowd, and toasted &lt;em&gt;“To the dry fools in blue!”&lt;/em&gt; before taking a bold swig onstage.&lt;/p&gt;
-
-  &lt;p&gt;But the climax came moments later, as she turned away from the audience and revealed, in lipstick scrawled across her bare back, the words:&lt;/p&gt;
-
-  &lt;p style=&quot;text-align:center;&quot;&gt;&lt;em&gt;“I WAS RAIDED — AND I LIKED IT.”&lt;/em&gt;&lt;/p&gt;
-
-  &lt;p&gt;Gasps, screams, and laughter followed as the room erupted. A commotion broke out near the back, where an &lt;strong&gt;undercover Prohibition agent reportedly fainted&lt;/strong&gt;. No arrests were made — but several cameras flashed just before Violet disappeared in a swirl of sequins and shadow.&lt;/p&gt;
-
-  &lt;p&gt;Club owner Declan “Deke” Morano declined to comment, though insiders claim &lt;strong&gt;the club’s phones haven’t stopped ringing&lt;/strong&gt;.&lt;/p&gt;
-
-  &lt;p&gt;Is she a criminal? A poet? A reckless dame with nothing to lose?&lt;br&gt;
-  One thing is certain: &lt;em&gt;“Velvet Violet” is a name the city won’t forget.&lt;/em&gt;&lt;/p&gt;
-
-  &lt;p style=&quot;text-align:right;&quot;&gt;— E.L.F.&lt;/p&gt;
-&lt;/div&gt;
-
-
-:: Your Special Passage
-
-(set: $showSpotlight to true)
-
-{(live: 3s)[
-  (set: $showSpotlight to false)
-  (stop:)
-]}
-
-(if: $showSpotlight)[
-  &lt;div class=&quot;spotlight-effect&quot;&gt;&lt;/div&gt;
-]
-
-Your passage content here.
+</tw-passagedata><tw-passagedata pid="24" name="Untitled Passage" tags="" position="1500,350" size="100,100">:: Paparazzi Scene
 
 &lt;style&gt;
-.spotlight-effect {
+.rapid-flash {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 50%, transparent 250px, rgba(0,0,0,0.9) 350px);
+  background: white;
+  opacity: 0;
   pointer-events: none;
   z-index: 1000;
-  animation: fadeInOut 3s ease-in-out;
+  animation: rapidFire 2s ease-in-out;
 }
 
-@keyframes fadeInOut {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+@keyframes rapidFire {
+  0%, 5%, 10%, 15%, 25%, 30%, 40%, 45%, 55%, 60%, 70%, 75%, 85%, 90%, 100% { 
+    opacity: 0; 
+  }
+  2%, 7%, 12%, 20%, 27%, 35%, 42%, 50%, 57%, 65%, 72%, 80%, 87%, 95% { 
+    opacity: 0.8; 
+  }
 }
-&lt;/style&gt;</tw-passagedata><tw-passagedata pid="25" name="spotlight" tags="background21" position="850,950" size="100,100">A low and familiar jazz riff curled up from Julian&#39;s bass, followed by a slow release of Thomas&#39; trumpet. The sensuality of Genevieve&#39;s piano. The soft tune of Arlene&#39;s clarinet accompanied by the rumble of Edward&#39;s drums. The curtains parted,  (click-append:&quot;The curtains parted,&quot;) [ 
+&lt;/style&gt;
+
+&lt;div class=&quot;rapid-flash&quot;&gt;&lt;/div&gt;
+
+The paparazzi swarm erupts in a frenzy of camera flashes!</tw-passagedata><tw-passagedata pid="25" name="spotlight" tags="background21" position="850,950" size="100,100">A low and familiar jazz riff curled up from Julian&#39;s bass, followed by a slow release of Thomas&#39; trumpet. The sensuality of Genevieve&#39;s piano. The soft tune of Arlene&#39;s clarinet accompanied by the rumble of Edward&#39;s drums. The curtains parted,  (click-append:&quot;The curtains parted,&quot;) [ 
 
 Just enough for me to step from the shadows.] (click-append:&quot;Just enough for me to step from the shadows.&quot;) [
 
@@ -1310,7 +1279,9 @@ I dropped from the stage and strutted to an older man&#39;s table, sitting on th
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
 }
-&lt;/style&gt;</tw-passagedata><tw-passagedata pid="26" name="From across the room..." tags="" position="850,1075" size="100,100">Henry McCartney leaned forward with his glass half raised in mesmerisation. (click-append:&quot;Henry McCartney leaned forward with his glass half raised in mesmerisation.&quot;) [
+&lt;/style&gt;
+
+&lt;audio src=&quot;./audio/jazz.mp3&quot; autoplay loop&gt;&lt;/audio&gt;</tw-passagedata><tw-passagedata pid="26" name="From across the room..." tags="" position="850,1075" size="100,100">Henry McCartney leaned forward with his glass half raised in mesmerisation. (click-append:&quot;Henry McCartney leaned forward with his glass half raised in mesmerisation.&quot;) [
 
 //Arthur,// he muttered to the man seated beside him.] (click-append:&quot;Arthur, he muttered to the man seated beside him.&quot;) [ //Where the hell did you //find// them?//] (click-append:&quot; Where the hell did you find them?&quot;) [
 
@@ -1318,44 +1289,97 @@ Arthur didn&#39;t answer right away. He watched Estelle, the way she held the ro
 
 //I didn&#39;t find her,// he finally said.] (click-append:&quot;I didn&#39;t find her, he finally said.&quot;) [ //She found me.//
 
-[[Back on stage...]]]</tw-passagedata><tw-passagedata pid="27" name="Back on stage..." tags="" position="850,1200" size="100,100">My final move was a daring lift, standing on Thomas&#39; shoulders, who had abandoned his trumpet. I balanced on one heel, blew a kiss to McCartney, and flipped backwards, landing on the floor in a split as the lights dropped. 
-
-A beat of silence, then the crowd erupted. (click-append:&quot;then the crowd erupted.&quot;) [
-
-McCartney was yelling.] (click-append:&quot;McCartney was yelling.&quot;) [ Put them on the books for Saturday! Hell, every Saturday!]
-
-
-
-(set: $showSpotlight to true)
-
-{(live: 3s)[
-  (set: $showSpotlight to false)
-  (stop:)
-]}
-
-(if: $showSpotlight)[
-  &lt;div class=&quot;spotlight-effect&quot;&gt;&lt;/div&gt;
-]
-
-
-&lt;style&gt;
-.spotlight-effect {
+[[Back on stage...]]]</tw-passagedata><tw-passagedata pid="27" name="Back on stage..." tags="" position="850,1200" size="100,100">&lt;style&gt;
+.flash-left {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 50%, transparent 100px, rgba(0,0,0,0.6) 200px);
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.9) 0%, 
+    rgba(255,255,255,0.3) 30%, 
+    transparent 60%);
+  opacity: 0;
   pointer-events: none;
   z-index: 1000;
-  animation: fadeInOut 3s ease-in-out;
+  animation: flashLoop 3s infinite;
+  animation-delay: 0s;
 }
 
-@keyframes fadeInOut {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+.flash-right {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-90deg, 
+    rgba(255,255,255,0.9) 0%, 
+    rgba(255,255,255,0.3) 30%, 
+    transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  animation: flashLoop 3s infinite;
+  animation-delay: 1s;
 }
-&lt;/style&gt;</tw-passagedata></tw-storydata>
+
+.flash-center {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 40%, 
+    rgba(255,255,255,0.95) 10%, 
+    rgba(255,255,255,0.4) 40%, 
+    transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  animation: flashLoop 3s infinite;
+  animation-delay: 2s;
+}
+
+@keyframes flashLoop {
+  0%, 90% { opacity: 0; }
+  5% { opacity: 1; }
+  10% { opacity: 0; }
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;flash-left&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;flash-right&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;flash-center&quot;&gt;&lt;/div&gt;
+
+My final move was a daring lift, standing on Thomas&#39; shoulders, who had abandoned his trumpet. I balanced on one heel, blew a kiss to McCartney, and flipped backwards, landing on the floor in a split as the lights dropped. 
+
+A beat of silence, then the crowd erupted. (click-append:&quot;then the crowd erupted.&quot;) [
+
+McCartney was yelling.] (click-append:&quot;McCartney was yelling.&quot;) [ [[Put them on the books for Saturday! Hell, every Saturday!]]]</tw-passagedata><tw-passagedata pid="28" name="Put them on the books for Saturday! Hell, every Saturday!" tags="" position="850,1325" size="100,100">&lt;div class=&quot;tw-prop&quot;&gt;
+  &lt;h3&gt;The New York Times&lt;/h3&gt;
+  &lt;strong&gt;April 4rd, 1922 – Vol. IX, No. 112&lt;/strong&gt;&lt;br&gt;
+  &lt;em&gt;New Act Shaking The Roof!&lt;/em&gt;
+  &lt;hr&gt;
+  &lt;p&gt;&lt;strong&gt;New Flapper &#39;Estelle Forrest&#39; Shocks Midnight Crowd at The Crimson Keys&lt;/strong&gt;&lt;br&gt;
+  By Edith LeFevre, Society Desk&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;NEW YORK CITY —&lt;/strong&gt; Jazz may swing, but last night it &lt;em&gt;shattered&lt;/em&gt;. At precisely 12:17 a.m., the new face of jazz &lt;strong&gt;Estelle Forrest&lt;/strong&gt; stunned the packed room at The Crimson Keys with an act that is already being whispered across the boroughs.&lt;/p&gt;
+
+  &lt;p&gt;The number began with a low and sultry riff, slow clarinet, a sensual trumpet, but halfway through her performance, Estelle &lt;strong&gt;uncorked a flask from her garter&lt;/strong&gt;, raised it in salute to the crowd, and toasted &lt;em&gt;&#39;To the dry fools in blue!&#39;&lt;/em&gt; before taking a bold swig onstage.&lt;/p&gt;
+
+  &lt;p&gt;But the climax came moments later, as she walked into the crowd, toward a dapper man, clutched him by the lapels, and planted her lips aganist his in a passionate kiss. The man was revealed to be Arthur Chapman. We could not get a confirmation on what his relations are to Forrest&lt;/p&gt;
+
+  &lt;p&gt;Gasps, screams, and laughter followed as the room erupted. A commotion broke out near the back, where an &lt;strong&gt;undercover Prohibition agent reportedly fainted&lt;/strong&gt;. No arrests were made, but several cameras flashed just before Forrest disappeared in a swirl of sequins and shadow.&lt;/p&gt;
+
+  &lt;p&gt;Club owner Henry McCartney seemed to be elated, as his speakeasy was finally being recognised. An insiders claim &lt;strong&gt;the club’s phones haven’t stopped ringing&lt;/strong&gt;.&lt;/p&gt;
+
+  &lt;p&gt;Is she a criminal? A poet? A reckless dame with nothing to lose?&lt;br&gt;
+  One thing is certain: &lt;em&gt;&#39;Estelle Forrestt&#39; is a name the city won’t forget.&lt;/em&gt;&lt;/p&gt;
+
+  &lt;p style=&quot;text-align:right;&quot;&gt;— E.L.F.&lt;/p&gt;
+&lt;/div&gt;
+</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
