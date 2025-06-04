@@ -411,7 +411,28 @@ tw-hook {
 
 @keyframes blink {
   0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
+  51%, 100% { opacity: 0; }
+  
+  
+  
+  
+  
+  .tw-prop {
+  font-family: 'Georgia', serif;
+  background: #f8f4e3;
+  border: 1px solid #999;
+  padding: 1.5em;
+  margin: 2em auto;
+  width: 90%;
+  max-width: 600px;
+  color: #2c2c2c;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+  
+  
+  
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">/*! Image Map Resizer (imageMapResizer.min.js ) - v1.0.10 - 2019-04-10
  *  Desc: Resize HTML imageMap to scaled image.
  *  Copyright: (c) 2019 David J. Bradshaw - dave@bradshaw.net
  *  License: MIT
@@ -427,7 +448,7 @@ tw-hook {
 
 // Harlowe Macro Framework, by Chapel; version 1.0.2
 ;!function(){"use strict";var r={major:1,minor:0,patch:2},e=[r.major,r.minor,r.patch].join(".");r.semantic=e,r=Object.freeze(r);var t=$("tw-storydata"),a=Object.freeze({name:t.attr("name"),ifid:t.attr("ifid")}),n=t.attr("format-version"),o=n.split("."),i=Object.freeze({major:o[0],minor:o[1],patch:o[2],semantic:n});window.Harlowe=window.Harlowe||{},window.Harlowe=Object.assign(window.Harlowe,{framework:r,API_ACCESS:Object.freeze({MACROS:require("macros"),STATE:require("state"),CHANGER:require("datatypes/changercommand"),ENGINE:require("engine")}),engine:i,story:a})}(),function(){"use strict";function e(r){return"number"==typeof r||"boolean"==typeof r||"string"==typeof r||null===r||Array.isArray(r)&&r.every(e)||r instanceof Set&&Array.from(r).every(e)||r instanceof Map&&Array.from(r.values()).every(e)||_changer.isPrototypeOf(r)}window.Harlowe=Object.assign(window.Harlowe,{helpers:{isSerialisable:e,isSerializable:e,arrayify:function(r,e){if(r){var t=[].slice.call(r);return void 0!==e&&(t=t.slice(e)),t}},getPassageData:function(r){var e=$('tw-passagedata[name="'+r+'"]');if(e[0])return e}}})}(),function(){"use strict";var n=window.localStorage||!1,o=Harlowe.story.ifid+"-tw-storage";function r(){try{if(!n)throw new Error("storage is inaccessible");n.setItem(o,JSON.stringify({ifid:Harlowe.story.ifid}))}catch(r){console.warn(r)}}function i(r){try{var e;if(n)return e=JSON.parse(n.getItem(o)),r&&r&&"string"==typeof r?e[r]:e;throw new Error("storage is inaccessible")}catch(r){console.warn(r)}}null==i()&&r(),Harlowe.storage={clear:r,save:function(r,e){try{if(!r||"string"!=typeof r)throw new TypeError("cannot store values without a valid storage key");if(void 0===e)throw new TypeError("cannot store undefined values");var t={};if(t[r]=e,!n)throw new Error("storage is inaccessible");var a=i();Object.assign(a,t),n.setItem(o,JSON.stringify(a))}catch(r){console.warn(r)}},load:i,remove:function(r){try{if(!r||"string"!=typeof r)throw new TypeError("cannot store values without a valid storage key");if(!n)throw new Error("storage is inaccessible");var e=i();e.hasOwnProperty(r)&&(delete e[r],n.setItem(o,JSON.stringify(e)))}catch(r){console.warn(r)}}}}(),function(){"use strict";function a(r,e,t){if(!(this instanceof a))return new a(r,e,t);this.name=r||"unknown",this.args=e||[],this.data=t||{},this.type=t&&t.type||"basic",this.fn=t&&t.fn||"handler","changer"===this.type&&("handler"===this.fn?this.instance=t&&t.instance||null:this.descriptor=t&&t.descriptor||null)}a.create=function(r,e,t){if(!r||"string"!=typeof r||!r.trim())throw new TypeError("Invalid macro name.");return e&&e instanceof Array||(e=[]),t&&"object"==typeof t||(t={type:"basic",fn:"handler"}),new a(r,e,t)},Object.assign(a.prototype,{clone:function(){return a.create(this.name,this.args,this.data)},syntax:function(){return"("+this.name+":)"},error:function(r,e){var t="Error in the "+this.syntax()+" macro: "+r;return e&&alert(t),console.warn("HARLOWE CUSTOM MACRO ERROR -> ",t),new Error(r)},typeCheck:function(r){r&&r instanceof Array||(r=Harlowe.helpers.arrayify(arguments));var n=this,o=[];if(r.forEach(function(r,e){var t=e+1,a=[];"string"==typeof r&&("any"===(a=r.includes("|")?r.split("|").map(function(r){return r.trim().toLowerCase()}):[r.trim().toLowerCase()])[0]||a.some(function(r){return typeof n.args[e]===r})||o.push("argument "+t+" should be a(n) "+a.join(" or ")))}),o.length)return n.error(o.join("; "))}}),window.Harlowe=Object.assign(window.Harlowe,{MacroContext:a})}(),function(){"use strict";var c=Harlowe.API_ACCESS.MACROS,l=Harlowe.API_ACCESS.CHANGER;window.Harlowe=Object.assign(window.Harlowe||{},{macro:function(r,e,t){if(!r||"string"!=typeof r||!r.trim())throw new TypeError("Invalid macro name.");if(!e||"function"!=typeof e)throw new TypeError("Invalid macro handler.");var a,n,o,i,s;t&&"function"==typeof t?(o=r,i=e,s=t,c.addChanger(o,function(){var r=Harlowe.helpers.arrayify(arguments,1),e=l.create(o,r),t=Harlowe.MacroContext.create(o,r,{type:"changer",fn:"handler",instance:e});return i.apply(t,r),e},function(){var r=Harlowe.helpers.arrayify(arguments),e=r.shift(),t=Harlowe.MacroContext.create(o,r,{type:"changer",fn:"changer",descriptor:e});s.apply(t,r)},c.TypeSignature.zeroOrMore(c.TypeSignature.Any))):(a=r,n=e,c.add(a,function(){var r=Harlowe.helpers.arrayify(arguments,1),e=Harlowe.MacroContext.create(a,r,{type:"basic",fn:"handler"}),t=n.apply(e,r);return null==t?"":t},c.TypeSignature.zeroOrMore(c.TypeSignature.Any)))}})}(),function(){"use strict";var t=Harlowe.API_ACCESS.STATE,e=Harlowe.API_ACCESS.ENGINE;function a(){return t.passage}window.Harlowe=Object.assign(window.Harlowe||{},{passage:a,tags:function(r){r=r||a();try{var e=Harlowe.helpers.getPassageData(r).attr("tags");return e?e.split(" "):[]}catch(r){return console.warn(r.message),[]}},goto:function(r){return e.goToPassage(r)},variable:function(r,e){if("$"!==r[0])throw new Error('cannot access variable "'+r+'"');if(r=r.substr(1),void 0!==e){if(!Harlowe.helpers.isSerialisable(e))throw new Error('The value passed to variable "'+r+'" cannot be serialized.');t.variables[r]=e}return t.variables[r]},visited:function(r){return t.passageNameVisited(r||a())},hasVisited:function(r){return 0<t.passageNameVisited(r||a())},turns:function(){return t.pastLength}})}();
-// end Harlowe Macro Framework</script><tw-tag name="background1" color="green"></tw-tag><tw-tag name="background10" color="green"></tw-tag><tw-tag name="background12" color="green"></tw-tag><tw-tag name="background13" color="green"></tw-tag><tw-tag name="background14" color="green"></tw-tag><tw-tag name="background15" color="green"></tw-tag><tw-tag name="background3" color="green"></tw-tag><tw-tag name="background2" color="green"></tw-tag><tw-tag name="background7" color="green"></tw-tag><tw-tag name="background5" color="green"></tw-tag><tw-tag name="background6" color="green"></tw-tag><tw-tag name="needs-picture" color="purple"></tw-tag><tw-tag name="needs-picture-2" color="purple"></tw-tag><tw-tag name="needs-picture-3" color="purple"></tw-tag><tw-tag name="needs-picture-4" color="purple"></tw-tag><tw-tag name="needs-pictures-13" color="purple"></tw-tag><tw-tag name="needs-pictures-14" color="purple"></tw-tag><tw-tag name="background8" color="green"></tw-tag><tw-tag name="background11" color="green"></tw-tag><tw-tag name="background16" color="green"></tw-tag><tw-tag name="background17" color="green"></tw-tag><tw-tag name="background18" color="green"></tw-tag><tw-tag name="begin" color="green"></tw-tag><tw-tag name="firstpage" color="green"></tw-tag><tw-tag name="background19" color="green"></tw-tag><tw-passagedata pid="1" name="back to entries" tags="background4 imagemap" position="600,300" size="100,100">
+// end Harlowe Macro Framework</script><tw-tag name="background1" color="green"></tw-tag><tw-tag name="background10" color="green"></tw-tag><tw-tag name="background12" color="green"></tw-tag><tw-tag name="background13" color="green"></tw-tag><tw-tag name="background14" color="green"></tw-tag><tw-tag name="background15" color="green"></tw-tag><tw-tag name="background3" color="green"></tw-tag><tw-tag name="background2" color="green"></tw-tag><tw-tag name="background7" color="green"></tw-tag><tw-tag name="background5" color="green"></tw-tag><tw-tag name="background6" color="green"></tw-tag><tw-tag name="needs-picture" color="purple"></tw-tag><tw-tag name="needs-picture-2" color="purple"></tw-tag><tw-tag name="needs-picture-3" color="purple"></tw-tag><tw-tag name="needs-picture-4" color="purple"></tw-tag><tw-tag name="needs-pictures-13" color="purple"></tw-tag><tw-tag name="needs-pictures-14" color="purple"></tw-tag><tw-tag name="background8" color="green"></tw-tag><tw-tag name="background11" color="green"></tw-tag><tw-tag name="background16" color="green"></tw-tag><tw-tag name="background17" color="green"></tw-tag><tw-tag name="background18" color="green"></tw-tag><tw-tag name="begin" color="green"></tw-tag><tw-tag name="firstpage" color="green"></tw-tag><tw-tag name="background19" color="green"></tw-tag><tw-tag name="background20" color="green"></tw-tag><tw-passagedata pid="1" name="back to entries" tags="background4 imagemap" position="600,300" size="100,100">
 
 
 
@@ -1015,10 +1036,46 @@ My arms were around his waist before he could finish his sentence.]
 
 &lt;audio src=&quot;./audio/breakfast.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
 
-(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="19" name="Rise to fame" tags="" position="850,825" size="100,100">camera flashes 
+(align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="19" name="Rise to fame" tags="spotlight" position="850,825" size="100,100">The air inside The Crimson Keys was thick with cigar smoke, bourbon breath, and growing impatience.
 
-(print: &quot;&lt;div class=&#39;flash-overlay&#39;&gt;&lt;/div&gt;&quot;)
+The velvet curtained stage had just cleared from another unoriginal charleston performance, the sixth of the night, and I could tell how utterly bored the audience looked. 
 
+The audience, a jaded mix of bootleggers, jazz performers, journalists, and many of Arthur&#39;s friends I had seen around the Chapman-Levard house before. The crowd mummured and stirred in their seats. A yawn escaped a mouth, and a scraped back chair fell on its side from a man who got up to exit the speakeasy. 
+
+This must have been why Arthur knew Henry McCartney was the right person to introduce me to. This speakeasy was in need of a refresh.
+
+Thomas took his place at the edge of the dimmed stage, trumpet in hand. Julian was standing near him, tuning his bass with a focused pout to his lips. Edward was seated at the middle of the stage with his drum set, muttering a prayer to himself.
+
+Arlene came up behind me and held on to my shoulders, wrapping me in a hug. (click-append:&quot;wrapping me in a hug.&quot;) [ //Are you ready to do this?// she whispered. //This is all you have been dreaming of.//] (click-append:&quot;Are you ready to do this? she whispered. This is all you have been dreaming of.&quot;) [
+
+I felt Genevieve on the other side of me. She clutched my hand in hers.] (click-append:&quot;She clutched my hand in hers.&quot;) [ //Have fun out there, Estelle. Don&#39;t let anyone stop you.//] (click-append:&quot;Have fun out there, Estelle. Don&#39;t let anyone stop you.&quot;) [
+
+I let out a breath and nodded. This was //it//. This was the night where I would prove to myself that I was capable, that I am not my parents&#39; daughter, and I //would// make a name for myself.
+
+Everyone took their places, then the lights darkened. A single spotlight snapped on, illuminating the red velvet curtain.]
+
+
+
+&lt;style&gt;
+.this-passage-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 120px, rgba(0,0,0,0.85) 250px);
+  pointer-events: none;
+  z-index: 999;
+  animation: passageSpotlight 3s ease-in-out forwards;
+}
+
+@keyframes passageSpotlight {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;this-passage-spotlight&quot;&gt;&lt;/div&gt;
 
 </tw-passagedata><tw-passagedata pid="20" name="For once in your life, stop lying." tags="background20" position="600,1200" size="100,100">(align:&quot;&lt;==&gt;&quot;)+(box:&quot;=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=========&quot;)[|sentence1)[Arlene never came out of that dressing room, never went past the secret door of the speakeasy.]
 ]
@@ -1151,6 +1208,33 @@ I remember the curtains drapping shut, the tears that followed, his jacket aroun
 I suppose I had many scenarios happen in my lifetime I would have enjoyed to tell, but this one is for myself, and myself only.
 
 So, if you happen to stumble upon this, leave the journal as it is, or perhaps if you are a person as curious as me, [[turn the hardcover page]], but first, promise you know how to keep a secret. 
+
+</tw-passagedata><tw-passagedata pid="24" name="Untitled Passage" tags="" position="1500,350" size="100,100">&lt;div class=&quot;tw-prop&quot;&gt;
+  &lt;h3&gt;The Manhattan Clarion&lt;/h3&gt;
+  &lt;strong&gt;April 3rd, 1927 – Vol. IX, No. 112&lt;/strong&gt;&lt;br&gt;
+  &lt;em&gt;Scandal Beneath the Spotlight!&lt;/em&gt;
+  &lt;hr&gt;
+  &lt;p&gt;&lt;strong&gt;“Velvet Violet” Shocks Midnight Crowd at Club Obsidian&lt;/strong&gt;&lt;br&gt;
+  By Edith LeFevre, Society Desk&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;NEW YORK CITY —&lt;/strong&gt; Jazz may swing, but last night it &lt;em&gt;shattered&lt;/em&gt;. At precisely 12:17 a.m., rising speakeasy darling &lt;strong&gt;Velvet Violet&lt;/strong&gt; stunned the packed room at Club Obsidian with an act that is already being whispered across the boroughs.&lt;/p&gt;
+
+  &lt;p&gt;The number began like any other — sultry torchlight, slow clarinet, feather fans — but halfway through her performance, Violet &lt;strong&gt;uncorked a flask from her garter&lt;/strong&gt;, raised it in salute to the crowd, and toasted &lt;em&gt;“To the dry fools in blue!”&lt;/em&gt; before taking a bold swig onstage.&lt;/p&gt;
+
+  &lt;p&gt;But the climax came moments later, as she turned away from the audience and revealed, in lipstick scrawled across her bare back, the words:&lt;/p&gt;
+
+  &lt;p style=&quot;text-align:center;&quot;&gt;&lt;em&gt;“I WAS RAIDED — AND I LIKED IT.”&lt;/em&gt;&lt;/p&gt;
+
+  &lt;p&gt;Gasps, screams, and laughter followed as the room erupted. A commotion broke out near the back, where an &lt;strong&gt;undercover Prohibition agent reportedly fainted&lt;/strong&gt;. No arrests were made — but several cameras flashed just before Violet disappeared in a swirl of sequins and shadow.&lt;/p&gt;
+
+  &lt;p&gt;Club owner Declan “Deke” Morano declined to comment, though insiders claim &lt;strong&gt;the club’s phones haven’t stopped ringing&lt;/strong&gt;.&lt;/p&gt;
+
+  &lt;p&gt;Is she a criminal? A poet? A reckless dame with nothing to lose?&lt;br&gt;
+  One thing is certain: &lt;em&gt;“Velvet Violet” is a name the city won’t forget.&lt;/em&gt;&lt;/p&gt;
+
+  &lt;p style=&quot;text-align:right;&quot;&gt;— E.L.F.&lt;/p&gt;
+&lt;/div&gt;
+
 
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
