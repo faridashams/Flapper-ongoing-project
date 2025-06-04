@@ -1038,9 +1038,9 @@ My arms were around his waist before he could finish his sentence.]
 
 (align:&quot;==&gt;&quot;)+(box:&quot;===XXXXXXX&quot;)[[back to entries]]</tw-passagedata><tw-passagedata pid="19" name="Rise to fame" tags="spotlight" position="850,825" size="100,100">The air inside The Crimson Keys was thick with cigar smoke, bourbon breath, and growing impatience.
 
-The velvet curtained stage had just cleared from another unoriginal charleston performance, the sixth of the night, and I could tell how utterly bored the audience looked. 
+The velvet curtained stage had just cleared from another unoriginal Charleston performance, the sixth of the night, and I could tell how utterly bored the audience looked. 
 
-The audience, a jaded mix of bootleggers, jazz performers, journalists, and many of Arthur&#39;s friends I had seen around the Chapman-Levard house before. The crowd mummured and stirred in their seats. A yawn escaped a mouth, and a scraped back chair fell on its side from a man who got up to exit the speakeasy. 
+The audience, a jaded mix of bootleggers, jazz performers, journalists, and many of Arthur&#39;s friends I had seen around the Chapman-Levard house before. The crowd murmured and stirred in their seats. A yawn escaped a mouth, and a scraped back chair fell on its side from a man who got up to exit the speakeasy. 
 
 This must have been why Arthur knew Henry McCartney was the right person to introduce me to. This speakeasy was in need of a refresh.
 
@@ -1052,31 +1052,7 @@ I felt Genevieve on the other side of me. She clutched my hand in hers.] (click-
 
 I let out a breath and nodded. This was //it//. This was the night where I would prove to myself that I was capable, that I am not my parents&#39; daughter, and I //would// make a name for myself.
 
-Everyone took their places, then the lights darkened. A single spotlight snapped on, illuminating the red velvet curtain.]
-
-
-
-&lt;style&gt;
-.this-passage-spotlight {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, transparent 120px, rgba(0,0,0,0.85) 250px);
-  pointer-events: none;
-  z-index: 999;
-  animation: passageSpotlight 3s ease-in-out forwards;
-}
-
-@keyframes passageSpotlight {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-&lt;/style&gt;
-
-&lt;div class=&quot;this-passage-spotlight&quot;&gt;&lt;/div&gt;
-
+Everyone took their places, then the lights darkened. A single [[spotlight]] snapped on, illuminating the red velvet curtain.]
 </tw-passagedata><tw-passagedata pid="20" name="For once in your life, stop lying." tags="background20" position="600,1200" size="100,100">(align:&quot;&lt;==&gt;&quot;)+(box:&quot;=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=========&quot;)[|sentence1)[Arlene never came out of that dressing room, never went past the secret door of the speakeasy.]
 ]
 
@@ -1236,7 +1212,103 @@ So, if you happen to stumble upon this, leave the journal as it is, or perhaps i
 &lt;/div&gt;
 
 
-</tw-passagedata></tw-storydata>
+:: Your Special Passage
+
+(set: $showSpotlight to true)
+
+{(live: 3s)[
+  (set: $showSpotlight to false)
+  (stop:)
+]}
+
+(if: $showSpotlight)[
+  &lt;div class=&quot;spotlight-effect&quot;&gt;&lt;/div&gt;
+]
+
+Your passage content here.
+
+&lt;style&gt;
+.spotlight-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, transparent 100px, rgba(0,0,0,0.9) 200px);
+  pointer-events: none;
+  z-index: 1000;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+&lt;/style&gt;</tw-passagedata><tw-passagedata pid="25" name="spotlight" tags="" position="850,950" size="100,100">A low and familiar jazz riff curled up from Julian&#39;s bass, followed by a slow release of Thomas&#39; trumpet. The sensuality of Genevieve&#39;s piano. The soft tune of Arlene&#39;s clarinet accompanied by the rumble of Edward&#39;s drums. The curtains parted,  (click-append:&quot;The curtains parted,&quot;) [ 
+
+Just enough for me to step from the shadows.] (click-append:&quot;Just enough for me to step from the shadows.&quot;) [
+
+My body was all angels, my short feathered bob catching the light, a slim white cigarette holder held between my silk covered fingers. I wore a red beaded bodice that clung to me and fell into a satin skirt that shimmered when I moved.] (click-append:&quot;moved.&quot;) [
+
+//Gentlemen//, I purred into the silver microphone.] (click-append:&quot;Gentlemen, I purred into the silver microphone.&quot;) [//We&#39;re not here to entertain. We are here to wake you up!//] (click-append:&quot;We&#39;re not here to entertain. We are here to wake you up!&quot;) [
+
+The crowd stilled, then the band kicked in, and I exploded.] (click-append:&quot;and I exploded.&quot;) [
+
+Spinning around the stage. High leg kicks. Drops timed to the beat.] (click-append:&quot;Drops timed to the beat.&quot;) [
+
+I dropped from the stage and strutted to an older man&#39;s table, sitting on the edge and reaching for his half full martini glass. (click-append:&quot;sitting on the edge and reaching for his half full martini glass.&quot;) [ //You wouldn&#39;t mind if I took a sip, sir?//] (click-append:&quot;You wouldn&#39;t mind if I took a sip, sir?&quot;) [The man laughed, and I tipped the liqour back, letting it coat my throat. I placed the glass on the table, facing the lipstick-stained rim toward him.]
+
+[[From across the room...]]
+
+&lt;style&gt;
+.spotlight-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, transparent 100px, rgba(0,0,0,0.9) 200px);
+  pointer-events: none;
+  z-index: 1000;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+&lt;/style&gt;</tw-passagedata><tw-passagedata pid="26" name="From across the room..." tags="" position="850,1075" size="100,100">Henry McCartney leaned forward with his glass half raised in mesmerisation. (click-append:&quot;Henry McCartney leaned forward with his glass half raised in mesmerisation.&quot;) [
+
+//Arthur,// he muttered to the man seated beside him.] (click-append:&quot;Arthur, he muttered to the man seated beside him.&quot;) [ //Where the hell did you //find// them?//] (click-append:&quot; Where the hell did you find them?&quot;) [
+
+Arthur didn&#39;t answer right away. He watched Estelle, the way she held the room like a matchbook, ready to strike at any moment. She met his eyes mid spin, winking. Arthur grinned, eyes glinting.] (click-append:&quot;Arthur grinned, eyes glinting.&quot;) [
+
+//I didn&#39;t find her,// he finally said.] (click-append:&quot;I didn&#39;t find her, he finally said.&quot;) [ //She found me.//
+
+[[Back on stage...]]]</tw-passagedata><tw-passagedata pid="27" name="Back on stage..." tags="" position="850,1200" size="100,100">My final move was a daring lift, standing on Thomas&#39; shoulders, who had abandoned his trumpet. I balanced on one heel, blew a kiss to McCartney, and flipped backwards, landing on the floor in a split as the lights dropped. 
+
+A beat of silence, then the crowd erupted. (click-append:&quot;then the crowd erupted.&quot;) [
+
+McCartney was yelling.] (click-append:&quot;McCartney was yelling.&quot;) [ Put them on the books for Saturday! Hell, every Saturday!]
+
+&lt;style&gt;
+.spotlight-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, transparent 100px, rgba(0,0,0,0.9) 200px);
+  pointer-events: none;
+  z-index: 1000;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+&lt;/style&gt;</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
