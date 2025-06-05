@@ -420,19 +420,26 @@ body {
 }
 
 
-  tw-passage[tags~="imagemap"] {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  tw-passage[tags~="imagemap"] img {
-    max-width: 100% !important;
-    max-height: calc(90vh) !important; /* You can also change this figure to just 90vh */
-    object-fit: contain !important;
-    margin: 0 auto 0 auto !important;
-    padding: 0 !important;
-    display: block !important;
-  }
+ tw-passage[tags~="imagemap"] {
+  margin: 0 !important;
+  padding: 0 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 1000 !important;
+  background: black !important; /* Optional: black background */
+}
 
+tw-passage[tags~="imagemap"] img {
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: contain !important; /* Shows whole image, may have letterboxing */
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
 
 
 
