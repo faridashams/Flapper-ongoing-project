@@ -444,8 +444,13 @@ tw-passage[tags~="imagemap"] img {
   padding: 0 !important;
   display: block !important;
   object-fit: contain !important;
+  opacity: 0 !important;
+  animation: fadeInFix 0.1s ease-in forwards !important;
 }
 
+@keyframes fadeInFix {
+  to { opacity: 1; }
+}
 /* Add this to your Story Stylesheet */
 tw-hook {
   transition: opacity 3s cubic-bezier(0.4, 0.0, 0.2, 1);
